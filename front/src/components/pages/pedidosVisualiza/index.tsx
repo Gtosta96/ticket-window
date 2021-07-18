@@ -1,11 +1,4 @@
-import React from "react";
-import { Redirect } from "react-router";
-import { PATHS } from "../../../config/paths";
-import { useAppSelector } from "../../../redux/configureStore";
 import PedidoCard from "../../shared/List";
-import InteractiveList from "../../shared/List";
-import Posts from "./Posts";
-import ProfileSidebar from "./ProfileSidebar";
 
 function PedidosVisualiza() {
   return (

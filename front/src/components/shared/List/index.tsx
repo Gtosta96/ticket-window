@@ -10,12 +10,9 @@ import {
   Avatar,
   IconButton,
   Typography,
-  FormGroup,
 } from "@material-ui/core";
 import clsx from "clsx";
-import { blue, red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
+import { blue } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";

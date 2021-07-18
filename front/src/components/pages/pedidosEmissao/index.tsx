@@ -1,20 +1,20 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React, { useContext } from "react";
 
-import { ReactComponent as GithubLogo } from "../../../assets/img/github-logo.svg";
-import { PATHS } from "../../../config/paths";
-import { useAppDispatch, useAppSelector } from "../../../redux/configureStore";
-import { getGithubUserApi } from "../../../redux/reducers/loginReducer";
+import { AppContext } from "../../../context/AppContext";
 import FloatingActionButtonSize from "../../shared/FAB";
 
 function PedidosEmissao() {
-  const dispatch = useAppDispatch();
-
-  const loginState = useAppSelector((state) => state.login);
+  const appContext = useContext(AppContext);
 
   return (
     <>
       <h1>CONTEUDO DA PAGINA EMISSÃO DE PEDIDOS</h1>
+      <ul>
+        {appContext.messages.map((message) => (
+          <li>{message}</li>
+        ))}
+      </ul>
+
       <ul>
         <li>Lista de pedidos</li>
         <li>Nome do Motoboy</li>

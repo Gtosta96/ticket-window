@@ -1,10 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import "../../../assets/css/gerencia.css";
-import { ReactComponent as GithubLogo } from "../../../assets/img/github-logo.svg";
-import { PATHS } from "../../../config/paths";
-import { useAppDispatch, useAppSelector } from "../../../redux/configureStore";
-import { getGithubUserApi } from "../../../redux/reducers/loginReducer";
 import PedidoCard from "../../shared/List";
 
 function PedidosGerencia() {
