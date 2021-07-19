@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { AppContext } from "../../../context/AppContext";
-import FloatingActionButtonSize from "../../shared/FAB";
+import FormAddPedidos from "../../shared/formAddPedidos";
 
 function PedidosEmissao() {
   const appContext = useContext(AppContext);
@@ -9,18 +9,18 @@ function PedidosEmissao() {
   return (
     <>
       <h1>CONTEUDO DA PAGINA EMISSÃO DE PEDIDOS</h1>
-      <ul>
+      {/* <ul>
         {appContext.messages.map((message) => (
           <li>{message}</li>
         ))}
-      </ul>
+      </ul> */}
 
       <ul>
         <li>Lista de pedidos</li>
         <li>Nome do Motoboy</li>
         <li>Numero do Pedido</li>
         <li>Plataforma</li>
-        <FloatingActionButtonSize />
+        <FormAddPedidos />
       </ul>
     </>
   );

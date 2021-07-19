@@ -10,7 +10,9 @@ import {
   Avatar,
   IconButton,
   Typography,
+  Button,
 } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import clsx from "clsx";
 import { blue } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -40,6 +42,9 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: blue[500],
     },
+    button: {
+      margin: theme.spacing(1),
+    },
   })
 );
 
@@ -60,48 +65,47 @@ export default function PedidoCard() {
             <MotorcycleIcon />
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
+        title={
+          <Typography variant="body1" color="textPrimary" component="p">
+            <b>
+              PEDIDO NUMERO <i>{numero}</i>
+            </b>
+          </Typography>
         }
-        title={`PEDIDO NUMERO ${numero}`}
-        subheader="September 14, 2016"
       />
+
       <CardContent>
         <FormLabel>
           <Typography variant="body1" color="textPrimary" component="p">
-            Nome do Cliente: JOÃO DA SILVA
+            <b>Nome do Cliente:</b> JOÃO DA SILVA
           </Typography>
+
           <Typography variant="body1" color="textPrimary" component="p">
-            Numero do Pedido: 10
+            <b>Numero do Pedido:</b> 10
           </Typography>
+
           <Typography variant="body1" color="textPrimary" component="p">
-            Plataforma Solicitada: IFOOD
+            <b>Plataforma Solicitada:</b> IFOOD
+          </Typography>
+
+          <Typography variant="body1" color="textPrimary" component="p">
+            <b>Nome Motoboy:</b> Bruno Cardoso
+          </Typography>
+
+          <Typography variant="body1" color="textPrimary" component="p">
+            <b>Tempo do Pedido:</b> 7 Minutos
           </Typography>
         </FormLabel>
       </CardContent>
-      <CardActions disableSpacing>
-        <Typography color="textSecondary">Mais Informações</Typography>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>
-            Motoboy da Entrega: Bigode da CGZINHA
-          </Typography>
-          <Typography paragraph>Tempo do Pedido: 7 Minutos</Typography>
-        </CardContent>
-      </Collapse>
+
+      <Button
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<DeleteIcon />}
+      >
+        Excluir pedido
+      </Button>
     </Card>
   );
 }

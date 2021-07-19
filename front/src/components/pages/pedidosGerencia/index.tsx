@@ -1,27 +1,8 @@
 import React from "react";
-import "../../../assets/css/gerencia.css";
-import PedidoCard from "../../shared/List";
+import "../../../assets/css/paginas.css";
+import PedidoCard from "../../shared/PedidoCard";
 
 function PedidosGerencia() {
-  // const dispatch = useAppDispatch();
-
-  // const loginState = useAppSelector((state) => state.login);
-  // const [inputText, setInputText] = React.useState("");
-
-  // function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-  //   const value = event.target.value;
-  //   setInputText(value);
-  // }
-
-  // function handleClick() {
-  //   console.log("botão login clicado");
-  //   dispatch(getGithubUserApi(inputText));
-  // }
-
-  // if (loginState.user) {
-  //   return <Redirect to={PATHS.ROOT} />;
-  // }
-
   return (
     <>
       <div>

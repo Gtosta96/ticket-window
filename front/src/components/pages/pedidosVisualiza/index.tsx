@@ -1,18 +1,43 @@
-import PedidoCard from "../../shared/List";
+import PedidoCard from "../../shared/PedidoCard";
+import "../../../assets/css/paginas.css";
 
 function PedidosVisualiza() {
   return (
-    <>
-      <h1>CONTEUDO DA PAGINA VIZUALIZAÇÃO DE PEDIDOS</h1>
-      <ul>
-        <li>Exibição de todos os pedidos prontos para retirada</li>
-        <li>Chamada do pedido pronto para retirada</li>
-        <li>RE-chamada a cada 2 minutos do pedido pronto para retirada</li>
-        <br />
-        <br />
+    <div className="visualizacao">
+      <div className="alertaPedidos">
+        <h1>
+          <b>PEDIDOS PRONTOS PARA ENTREGA</b>
+        </h1>
+      </div>
+      <div className="pedidosProntos">
         <PedidoCard />
-      </ul>
-    </>
+        <PedidoCard />
+        <PedidoCard />
+        <PedidoCard />
+        <PedidoCard />
+        <PedidoCard />
+        <PedidoCard />
+        <PedidoCard />
+      </div>
+      <div className="tempoEspera">
+        <h1>
+          <b>
+            TEMPO DE ESPERA: <p>15 MINUTOS</p>
+          </b>
+        </h1>
+      </div>
+      <div className="ultimosPedidos">
+        <h3>ULTIMOS PEDIDOS CHAMADOS</h3>
+
+        <ul>
+          <dd>Pedido 5</dd>
+          <dd>Pedido 7</dd>
+          <dd>Pedido 10</dd>
+          <dd>Pedido 2</dd>
+        </ul>
+      </div>
+      <div className="footer"></div>
+    </div>
   );
 }
 
