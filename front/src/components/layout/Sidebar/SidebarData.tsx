@@ -2,24 +2,29 @@ import React from "react";
 import * as FiIcons from "react-icons/fi";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
-import * as RiIcons from "react-icons/ri";
+
+export interface ISideBarData {
+  key: number;
+  title: string;
+  path: string;
+  icon: any;
+}
 
 const SidebarData = [
   {
+    key: 0,
     title: "Emissão",
     path: "/emissao",
     icon: <FiIcons.FiSend />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
+    key: 1,
     title: "Visualização",
     path: "/visualiza",
     icon: <IoIcons.IoIosPaper />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
+    key: 2,
     title: "Entregas",
     path: "/gerencia",
     icon: <FaIcons.FaCartPlus />,

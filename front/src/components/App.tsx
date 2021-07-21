@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Sidebar />
 
-      <div style={{ maxWidth: "960px", margin: "auto" }}>
+      <div style={{ maxWidth: "1440px", margin: "auto" }}>
         <AppContextProvider>
           <Switch>
             <Route path="/emissao" exact component={PedidosEmissao} />
