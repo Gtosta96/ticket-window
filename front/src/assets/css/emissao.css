@@ -1,0 +1,62 @@
+* {
+  border-radius: 0px;
+}
+
+.gerencia {
+  color: #000000;
+  display: grid;
+  grid-auto-flow: repeat;
+  padding: 8px;
+  margin-top: 65px;
+}
+
+.visualizacao {
+  width: 75vw;
+  height: 100vh;
+  background-color: #b4b4b4;
+  margin-top: 65px;
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  padding: 8px;
+  grid-template-areas:
+    "ap ap ap ap ts"
+    "pp pp pp pp up"
+    "pp pp pp pp up"
+    "ft ft ft ft ft";
+}
+.emissao {
+  color: #000000;
+  display: grid;
+  padding: 8px;
+  margin-top: 65px;
+}
+.alertaPedidos {
+  background-color: #3316c4;
+  grid-area: ap;
+}
+.pedidosProntos {
+  background-color: #3b23b1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-area: pp;
+}
+.tempoEspera {
+  background-color: #492fce;
+  grid-area: ts;
+}
+.ultimosPedidos {
+  background-color: #401bf7;
+  grid-area: up;
+}
+.footer {
+  background-color: #3d3178;
+  grid-area: ft;
+}
+
+.alinhado {
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
+}

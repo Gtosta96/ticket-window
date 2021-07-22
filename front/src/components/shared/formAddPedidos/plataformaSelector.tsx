@@ -5,13 +5,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-export default function PlataformaSelector() {
-  const [value, setValue] = React.useState("female");
+export default function PlataformaSelector(props) {
+  const [value, setValue] = React.useState("Plataforma");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
-
+  props.onSetSelect(value);
   return (
     <FormControl component="fieldset">
       <nav>
@@ -21,6 +21,7 @@ export default function PlataformaSelector() {
           name="plataforma"
           value={value}
           onChange={handleChange}
+          row={true}
         >
           <dd>
             <FormControlLabel value="IFood" control={<Radio />} label="IFood" />

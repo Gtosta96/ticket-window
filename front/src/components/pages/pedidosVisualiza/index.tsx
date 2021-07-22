@@ -1,5 +1,5 @@
 import PedidoCard from "../../shared/PedidoCard";
-import "../../../assets/css/paginas.css";
+import "../../../assets/css/visualizacao.css";
 
 function PedidosVisualiza() {
   return (

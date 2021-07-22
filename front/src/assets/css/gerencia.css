@@ -1,0 +1,12 @@
+* {
+  border-radius: 0px;
+}
+
+.gerencia {
+  color: #000000;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  padding: 8px;
+  margin-top: 65px;
+}

@@ -5,25 +5,24 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardActions,
-  Collapse,
   Avatar,
-  IconButton,
   Typography,
   Button,
+  Icon,
+  Divider,
+  Grid,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import clsx from "clsx";
 import { blue } from "@material-ui/core/colors";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
+import { Send, SendRounded, TvRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: 345,
-      margin: "10px",
+    card: {
+      maxWidth: 300,
+      margin: "10px 10px",
+      padding: "5px 5px",
     },
     media: {
       height: 0,
@@ -50,18 +49,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PedidoCard() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   const numero = 10;
   return (
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="pedido" className={classes.avatar}>
             <MotorcycleIcon />
           </Avatar>
         }
@@ -76,36 +69,79 @@ export default function PedidoCard() {
 
       <CardContent>
         <FormLabel>
-          <Typography variant="body1" color="textPrimary" component="p">
-            <b>Nome do Cliente:</b> JOÃO DA SILVA
+          <Typography display="inline" color="textPrimary" component="p">
+            <b>Nome do Cliente:</b>
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p">
+            JOÃO DA SILVA
           </Typography>
 
-          <Typography variant="body1" color="textPrimary" component="p">
-            <b>Numero do Pedido:</b> 10
+          <Typography
+            justify-content="center"
+            variant="body2"
+            color="textPrimary"
+            component="p"
+          >
+            <b>Numero do Pedido:</b>
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p">
+            10
           </Typography>
 
-          <Typography variant="body1" color="textPrimary" component="p">
-            <b>Plataforma Solicitada:</b> IFOOD
+          <Typography variant="body2" color="textPrimary" component="p">
+            <b>Plataforma Solicitada:</b>
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p">
+            IFOOD
           </Typography>
 
-          <Typography variant="body1" color="textPrimary" component="p">
-            <b>Nome Motoboy:</b> Bruno Cardoso
+          <Typography variant="body2" color="textPrimary" component="p">
+            <b>Nome Motoboy:</b>
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p">
+            Bruno Cardoso
           </Typography>
 
-          <Typography variant="body1" color="textPrimary" component="p">
-            <b>Tempo do Pedido:</b> 7 Minutos
+          <Typography variant="body2" color="textPrimary" component="p">
+            <b>Tempo do Pedido:</b>
+          </Typography>
+          <Typography variant="body2" color="textPrimary" component="p">
+            7 Minutos
           </Typography>
         </FormLabel>
       </CardContent>
 
-      <Button
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        startIcon={<DeleteIcon />}
-      >
-        Excluir pedido
-      </Button>
+      <Grid container alignItems="center" className={classes.card}>
+        <Button
+          size="small"
+          variant="contained"
+          component="span"
+          color="primary"
+          className={classes.button}
+          endIcon={
+            <Icon>
+              <TvRounded fontSize="small" />
+            </Icon>
+          }
+        >
+          CHAMAR
+        </Button>
+        <Divider orientation="horizontal" flexItem />
+        <Button
+          size="small"
+          variant="contained"
+          component="span"
+          color="secondary"
+          className={classes.button}
+          endIcon={
+            <Icon>
+              <SendRounded fontSize="small" />
+            </Icon>
+          }
+        >
+          Finalizar
+        </Button>
+      </Grid>
     </Card>
   );
 }

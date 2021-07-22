@@ -1,14 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Varela+Round";
 
-@import "./variables.css";
-@import "./header.css";
-@import "./login.css";
-@import "./feed.css";
-@import "./posts.css";
-@import "./post.css";
-@import "./profile.css";
-@import "./typing.css";
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,4 +19,10 @@ body {
   body {
     font-size: 18px;
   }
+}
+
+.alinhado {
+  width: 100%;
+  display: inline-block;
+  justify-content: center;
 }
