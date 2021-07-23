@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert, AlertTitle } from "@material-ui/lab";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import {
   FormLabel,
@@ -19,6 +20,12 @@ import { Send, SendRounded, TvRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    alert: {
+      width: "100%",
+      "& > * + *": {
+        marginTop: theme.spacing(2),
+      },
+    },
     card: {
       maxWidth: 300,
       margin: "10px 10px",
@@ -50,6 +57,11 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function PedidoCard() {
   const classes = useStyles();
   const numero = 10;
+
+  const [statePedidoFinalizado, setStatePedidoFinalizado] =
+    React.useState(false);
+  const [statePedidoChamado, setStatePedidoChamado] = React.useState(false);
+
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -61,7 +73,7 @@ export default function PedidoCard() {
         title={
           <Typography variant="body1" color="textPrimary" component="p">
             <b>
-              PEDIDO NUMERO <i>{numero}</i>
+              # <i>{numero}</i>
             </b>
           </Typography>
         }
@@ -89,14 +101,14 @@ export default function PedidoCard() {
           </Typography>
 
           <Typography variant="body2" color="textPrimary" component="p">
-            <b>Plataforma Solicitada:</b>
+            <b>Plataforma:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
             IFOOD
           </Typography>
 
           <Typography variant="body2" color="textPrimary" component="p">
-            <b>Nome Motoboy:</b>
+            <b>Motoboy:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
             Bruno Cardoso
@@ -113,6 +125,11 @@ export default function PedidoCard() {
 
       <Grid container alignItems="center" className={classes.card}>
         <Button
+          disabled={statePedidoChamado}
+          onClick={() => {
+            console.log("Solicitado ao motoboy a retirada no balcão!");
+            setStatePedidoChamado(true);
+          }}
           size="small"
           variant="contained"
           component="span"
@@ -128,6 +145,10 @@ export default function PedidoCard() {
         </Button>
         <Divider orientation="horizontal" flexItem />
         <Button
+          disabled={statePedidoFinalizado}
+          onClick={() => {
+            setStatePedidoFinalizado(true);
+          }}
           size="small"
           variant="contained"
           component="span"

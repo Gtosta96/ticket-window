@@ -1,0 +1,10 @@
+.aviso {
+  position: absolute;
+  height: 85%;
+  width: 85%;
+  background-color: #e96660;
+  padding: 50px;
+  margin: 40px 40px;
+  border: 8px solid;
+  border-radius: 5px;
+}

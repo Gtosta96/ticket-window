@@ -2,11 +2,30 @@
   border-radius: 0px;
 }
 
-.gerencia {
-  color: #000000;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
+.botoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 940px;
   padding: 8px;
+  margin: 0 auto;
   margin-top: 65px;
+}
+.botoes > div {
+  display: flex;
+}
+
+.gerencia {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 940px;
+  padding: 8px;
+  margin: 0 auto;
+  margin-top: 65px;
+}
+
+.gerencia > div {
+  flex: 1 1 200px;
 }

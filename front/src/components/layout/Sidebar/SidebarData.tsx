@@ -13,19 +13,19 @@ export interface ISideBarData {
 const SidebarData = [
   {
     key: 0,
-    title: "Emissão",
+    title: "Pedidos em Aberto",
     path: "/emissao",
     icon: <FiIcons.FiSend />,
   },
   {
     key: 1,
-    title: "Visualização",
+    title: "Display de Chamadas",
     path: "/visualiza",
     icon: <IoIcons.IoIosPaper />,
   },
   {
     key: 2,
-    title: "Entregas",
+    title: "Gerenciamento de Pedidos",
     path: "/gerencia",
     icon: <FaIcons.FaCartPlus />,
   },

@@ -1,43 +1,25 @@
-import PedidoCard from "../../shared/PedidoCard";
 import "../../../assets/css/visualizacao.css";
-
+import ChamadaCard from "../../shared/ChamadaCard";
 function PedidosVisualiza() {
   return (
-    <div className="visualizacao">
-      <div className="alertaPedidos">
+    <>
+      <div className="visualizacao">
         <h1>
-          <b>PEDIDOS PRONTOS PARA ENTREGA</b>
+          <b>BEM - VINDOS - AGUARDE SEU PEDIDO SER CHAMADO</b>
         </h1>
       </div>
       <div className="pedidosProntos">
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
-        <PedidoCard />
+        <ChamadaCard />
       </div>
-      <div className="tempoEspera">
+      <div className="tempoEspera"> </div>
+
+      <div className="ultimosPedidos"></div>
+      <div className="footer">
         <h1>
-          <b>
-            TEMPO DE ESPERA: <p>15 MINUTOS</p>
-          </b>
+          <b>DIRIJA COM RESPONSABILIDADE</b>
         </h1>
       </div>
-      <div className="ultimosPedidos">
-        <h3>ULTIMOS PEDIDOS CHAMADOS</h3>
-
-        <ul>
-          <dd>Pedido 5</dd>
-          <dd>Pedido 7</dd>
-          <dd>Pedido 10</dd>
-          <dd>Pedido 2</dd>
-        </ul>
-      </div>
-      <div className="footer"></div>
-    </div>
+    </>
   );
 }
 

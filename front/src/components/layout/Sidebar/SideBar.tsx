@@ -24,7 +24,7 @@ import SidebarData, { ISideBarData } from "./SidebarData";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

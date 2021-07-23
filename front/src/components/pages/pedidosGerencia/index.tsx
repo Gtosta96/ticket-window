@@ -1,22 +1,55 @@
 import React from "react";
 import "../../../assets/css/gerencia.css";
 import FormAddPedidos from "../../shared/formAddPedidos";
+import FormTempoEspera from "../../shared/formTempoEspera";
 import PedidoCard from "../../shared/PedidoCard";
 
 function PedidosGerencia() {
   return (
-    <div className="gerencia">
-      <div>
+    <>
+      <div className="botoes">
         <h1>GERENCIAMENTO DE PEDIDOS</h1>
-        <FormAddPedidos />
+        <div>
+          <FormAddPedidos />
+          <FormTempoEspera />
+        </div>
       </div>
-
-      <PedidoCard />
-      <PedidoCard />
-      <PedidoCard />
-      <PedidoCard />
-      <PedidoCard />
-    </div>
+      <div className="gerencia">
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+        <div>
+          <PedidoCard />
+        </div>
+      </div>
+    </>
   );
 }
 

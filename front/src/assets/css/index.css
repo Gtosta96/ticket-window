@@ -13,16 +13,3 @@ body {
   color: var(--base-light);
   background-color: #d1d1d1;
 }
-
-@media (max-width: 600px) {
-  html,
-  body {
-    font-size: 18px;
-  }
-}
-
-.alinhado {
-  width: 100%;
-  display: inline-block;
-  justify-content: center;
-}
