@@ -4,6 +4,8 @@ import FormAddPedidos from "../../shared/formAddPedidos";
 import FormTempoEspera from "../../shared/formTempoEspera";
 import PedidoCard from "../../shared/PedidoCard";
 
+import { ordersMock } from "../../../services/orders";
+
 function PedidosGerencia() {
   return (
     <>
@@ -14,40 +16,11 @@ function PedidosGerencia() {
           <FormTempoEspera />
         </div>
       </div>
+
       <div className="gerencia">
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
-        <div>
-          <PedidoCard />
-        </div>
+        {ordersMock.orders.map((order) => (
+          <PedidoCard key={order.id} order={order} />
+        ))}
       </div>
     </>
   );

@@ -17,6 +17,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { blue } from "@material-ui/core/colors";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import { Send, SendRounded, TvRounded } from "@material-ui/icons";
+import { CardProps } from "./types";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -54,9 +55,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function PedidoCard() {
+export default function PedidoCard(props: CardProps) {
   const classes = useStyles();
   const numero = 10;
+
+  console.log(props.card);
 
   const [statePedidoFinalizado, setStatePedidoFinalizado] =
     React.useState(false);
