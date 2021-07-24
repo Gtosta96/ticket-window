@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     paddingTop: "15px",
   },
-  alinhar: {},
 }));
 
 export default function FormAddPedidos() {

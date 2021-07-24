@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import styled from "styled-components";
+import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 
 const Header = styled.h1`
   font-size: 5.25rem;
@@ -16,7 +17,6 @@ const Alerta = styled.h1`
   font-size: 4.25rem;
   text-align: center;
   text-transform: uppercase;
-  text-justify: center;
 `;
 const Divisor = styled.div`
   border-bottom: 3px solid;
@@ -26,11 +26,19 @@ const Divisor = styled.div`
 export default function ChamadaCard() {
   return (
     <div className="card">
-      <Header>- ATENÇÃO -</Header>
+      <Header>
+        <NotificationsActiveOutlinedIcon className="sino" />
+        {"  "}ATENÇÃO{"  "}
+        <NotificationsActiveOutlinedIcon className="sino" />
+      </Header>
       <Divisor />
       <div className="inf">
-        <Alerta>PEDIDO NUMERO : 6821 </Alerta>
-        <Alerta>FAVOR RETIRAR</Alerta>
+        <Alerta>
+          PEDIDO NUMERO <p>6821</p>
+        </Alerta>
+        <Alerta>
+          <b> FAVOR RETIRAR</b>
+        </Alerta>
         <Alerta>PEDIDO NO BALCÃO</Alerta>
       </div>
     </div>

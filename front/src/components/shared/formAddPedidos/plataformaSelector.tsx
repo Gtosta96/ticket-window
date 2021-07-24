@@ -3,9 +3,17 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import { makeStyles, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  text: {
+    color: "black",
+    paddingTop: "15px",
+  },
+}));
 
 export default function PlataformaSelector(props) {
+  const classes = useStyles();
   const [value, setValue] = React.useState("Plataforma");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +23,7 @@ export default function PlataformaSelector(props) {
   return (
     <FormControl component="fieldset">
       <nav>
-        <FormLabel component="legend"> Plataforma </FormLabel>
+        <Typography className={classes.text}>Plataforma</Typography>
         <RadioGroup
           aria-label="plataforma"
           name="plataforma"
