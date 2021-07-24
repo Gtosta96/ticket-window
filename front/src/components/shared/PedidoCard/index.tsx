@@ -1,5 +1,4 @@
 import React from "react";
-import { Alert, AlertTitle } from "@material-ui/lab";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import {
   FormLabel,
@@ -13,10 +12,9 @@ import {
   Divider,
   Grid,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
 import { blue } from "@material-ui/core/colors";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
-import { Send, SendRounded, TvRounded } from "@material-ui/icons";
+import { SendRounded, TvRounded } from "@material-ui/icons";
 import { CardProps } from "./types";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,20 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "10px 10px",
       padding: "5px 5px",
     },
-    media: {
-      height: 0,
-      paddingTop: "56.25%", // 16:9
-    },
-    expand: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: "rotate(180deg)",
-    },
     avatar: {
       backgroundColor: blue[500],
     },
@@ -57,9 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PedidoCard(props: CardProps) {
   const classes = useStyles();
-  const numero = 10;
-
-  console.log(props.card);
 
   const [statePedidoFinalizado, setStatePedidoFinalizado] =
     React.useState(false);
@@ -76,7 +57,7 @@ export default function PedidoCard(props: CardProps) {
         title={
           <Typography variant="body1" color="textPrimary" component="p">
             <b>
-              # <i>{numero}</i>
+              # <i>{props.order.id}</i>
             </b>
           </Typography>
         }
@@ -88,7 +69,7 @@ export default function PedidoCard(props: CardProps) {
             <b>Nome do Cliente:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-            JOÃO DA SILVA
+            {props.order.clientName}
           </Typography>
 
           <Typography
@@ -100,21 +81,21 @@ export default function PedidoCard(props: CardProps) {
             <b>Numero do Pedido:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-            10
+            {props.order.id}
           </Typography>
 
           <Typography variant="body2" color="textPrimary" component="p">
             <b>Plataforma:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-            IFOOD
+            {props.order.platform}
           </Typography>
 
           <Typography variant="body2" color="textPrimary" component="p">
             <b>Motoboy:</b>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-            Bruno Cardoso
+            {props.order.deliveryMan}
           </Typography>
 
           <Typography variant="body2" color="textPrimary" component="p">

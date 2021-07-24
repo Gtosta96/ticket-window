@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const useStyles = makeStyles((theme) => ({

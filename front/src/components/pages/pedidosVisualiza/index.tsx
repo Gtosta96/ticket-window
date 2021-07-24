@@ -1,4 +1,4 @@
-import "../../../assets/css/visualizacao.css";
+import "./visualizacao.css";
 import ChamadaCard from "../../shared/ChamadaCard";
 function PedidosVisualiza() {
   return (

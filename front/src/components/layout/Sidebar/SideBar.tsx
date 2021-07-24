@@ -89,7 +89,6 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -97,7 +96,6 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   const LinkMenu = styled(Link)`
     background: #ffffff;
     height: 60px;
@@ -113,7 +111,6 @@ export default function PersistentDrawerLeft() {
       color: #ffffff;
     }
   `;
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -158,14 +155,16 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {SidebarData.map((props: ISideBarData) => (
-            <LinkMenu to={props.path}>
-              <ListItem button key={props.key}>
-                <ListItemIcon>{props.icon}</ListItemIcon>
-                <ListItemText primary={props.title} />
-              </ListItem>
-            </LinkMenu>
-          ))}
+          {SidebarData.map((props: ISideBarData) => {
+            return (
+              <LinkMenu to={props.path}>
+                <ListItem>
+                  <ListItemIcon>{props.icon}</ListItemIcon>
+                  <ListItemText primary={props.title} />
+                </ListItem>
+              </LinkMenu>
+            );
+          })}
         </List>
         <Divider />
       </Drawer>

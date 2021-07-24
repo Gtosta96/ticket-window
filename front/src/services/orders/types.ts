@@ -13,6 +13,7 @@ export enum OrderStatus {
 export type Order = {
   id: string | number;
   deliveryMan: string;
+  clientName: string;
   status: OrderStatus;
   platform: DeliveryPlatforms;
 

@@ -1,4 +1,3 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
 import "./index.css";
 import styled from "styled-components";
@@ -11,6 +10,7 @@ const Header = styled.h1`
   border: 3px solid;
   background-color: #151515;
   color: #ffffff;
+  border-radius: 15px 15px 0 0;
 `;
 const Alerta = styled.h1`
   font-size: 4.25rem;
@@ -25,12 +25,14 @@ const Divisor = styled.div`
 
 export default function ChamadaCard() {
   return (
-    <div className="aviso">
+    <div className="card">
       <Header>- ATENÇÃO -</Header>
       <Divisor />
-      <Alerta>PEDIDO NUMERO : 6821 </Alerta>
-      <Alerta>FAVOR RETIRAR</Alerta>
-      <Alerta>PEDIDO NO BALCÃO</Alerta>
+      <div className="inf">
+        <Alerta>PEDIDO NUMERO : 6821 </Alerta>
+        <Alerta>FAVOR RETIRAR</Alerta>
+        <Alerta>PEDIDO NO BALCÃO</Alerta>
+      </div>
     </div>
   );
 }

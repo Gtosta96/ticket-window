@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../assets/css/gerencia.css";
+import "./gerencia.css";
 import FormAddPedidos from "../../shared/formAddPedidos";
 import FormTempoEspera from "../../shared/formTempoEspera";
 import PedidoCard from "../../shared/PedidoCard";
