@@ -106,7 +106,7 @@ export default function PersistentDrawerLeft() {
     color: #272626;
     font-size: 18px;
     &:hover {
-      background: #632ce4;
+      background: #3f51b5;
       cursor: pointer;
       color: #ffffff;
     }

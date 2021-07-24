@@ -1,5 +1,4 @@
 import React from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Sidebar from "./layout/Sidebar/SideBar";
 import PedidosEmissao from "./pages/pedidosEmissao";

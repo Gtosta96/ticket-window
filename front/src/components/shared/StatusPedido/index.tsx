@@ -1,20 +1,8 @@
 import React from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import {
-  FormLabel,
-  Card,
-  CardHeader,
-  CardContent,
-  Avatar,
-  Typography,
-  Button,
-  Icon,
-  Divider,
-  Grid,
-} from "@material-ui/core";
+import { Card, CardHeader, Avatar, Typography } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
-import { SendRounded, TvRounded } from "@material-ui/icons";
 import { CardProps } from "./types";
 
 const useStyles = makeStyles((theme: Theme) =>

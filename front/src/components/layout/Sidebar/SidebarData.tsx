@@ -13,21 +13,21 @@ export interface ISideBarData {
 const SidebarData = [
   {
     key: 0,
-    title: "Pedidos em Aberto",
+    title: "Gerência",
+    path: "/gerencia",
+    icon: <FaIcons.FaCartPlus />,
+  },
+  {
+    key: 1,
+    title: "Controle",
     path: "/emissao",
     icon: <FiIcons.FiSend />,
   },
   {
-    key: 1,
+    key: 2,
     title: "Display de Chamadas",
     path: "/visualiza",
     icon: <IoIcons.IoIosPaper />,
-  },
-  {
-    key: 2,
-    title: "Gerenciamento de Pedidos",
-    path: "/gerencia",
-    icon: <FaIcons.FaCartPlus />,
   },
 ];
 export default SidebarData;
