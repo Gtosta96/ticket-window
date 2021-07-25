@@ -22,7 +22,7 @@ function App() {
           <Switch>
             <Route path={PATHS.TICKETS} exact component={PedidosEmissao} />
             <Route path={PATHS.MANAGEMENT} exact component={PedidosGerencia} />
-            <Route path={PATHS.DISPLAY} exact component={Display} />
+            <Route path={PATHS.DISPLAY} exact component={PedidosVisualiza} />
             <Route path="/socket" component={Socket} />
           </Switch>
         </AppContextProvider>

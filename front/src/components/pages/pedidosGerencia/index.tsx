@@ -3,8 +3,6 @@ import "./gerencia.css";
 import AddOrderForm from "./AddOrderForm";
 import FormTempoEspera from "./formTempoEspera";
 import PedidoCard from "./PedidoCard";
-
-import { ordersMock } from "../../../services/orders";
 import { Box, Typography } from "@material-ui/core";
 import { AppContext } from "../../../context/AppContext";
 
@@ -24,12 +22,6 @@ function PedidosGerencia() {
           <PedidoCard key={order.id} order={order} />
         ))}
       </Box>
-
-      {/* <div className="gerencia">
-        {ordersMock.orders.map((order) => (
-          <PedidoCard key={order.id} order={order} />
-        ))}
-      </div> */}
     </Box>
   );
 }
