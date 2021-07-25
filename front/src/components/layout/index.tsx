@@ -7,7 +7,6 @@ import {
   createStyles,
 } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -20,7 +19,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import SidebarData, { ISideBarData } from "./SidebarData";
+import SidebarData from "./helpers";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -82,10 +81,11 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginLeft: 0,
     },
+    offset: theme.mixins.toolbar,
   })
 );
 
-export default function PersistentDrawerLeft() {
+export default function Layout() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -105,6 +105,7 @@ export default function PersistentDrawerLeft() {
     text-decoration: none;
     color: #272626;
     font-size: 18px;
+
     &:hover {
       background: #3f51b5;
       cursor: pointer;
@@ -113,7 +114,6 @@ export default function PersistentDrawerLeft() {
   `;
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -135,6 +135,7 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.offset} />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -155,12 +156,12 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {SidebarData.map((props: ISideBarData) => {
+          {SidebarData.map((data) => {
             return (
-              <LinkMenu to={props.path}>
+              <LinkMenu key={data.key} to={data.path}>
                 <ListItem>
-                  <ListItemIcon>{props.icon}</ListItemIcon>
-                  <ListItemText primary={props.title} />
+                  <ListItemIcon>{data.icon}</ListItemIcon>
+                  <ListItemText primary={data.title} />
                 </ListItem>
               </LinkMenu>
             );

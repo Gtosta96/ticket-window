@@ -1,22 +1,20 @@
-export enum DeliveryPlatforms {
-  IFOOD = `ifood`,
-  UBER_EATS = `Uber Eats`,
-  NINENINE_FOOD = `99Food`,
-}
+export const deliveryPlatforms = [
+  { label: "ifood", value: "ifood" },
+  { label: "Uber Eats", value: "Uber Eats" },
+  { label: "99Food", value: "99Food" },
+];
 
-export enum OrderStatus {
-  REQUESTED = `requested`,
-  SENT = `sent`,
-  CANCELED = `canceled`,
-}
+export type OrderStatus =
+  | "Em Preparação"
+  | "Preparado"
+  | "Entregue ao Motoboy"
+  | "Cancelado";
 
 export type Order = {
   id: string | number;
   deliveryMan: string;
-  clientName: string;
+  platform: string;
   status: OrderStatus;
-  platform: DeliveryPlatforms;
-
   createdAt: number;
   updatedAt: number;
 };

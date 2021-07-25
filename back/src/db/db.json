@@ -1,126 +1,68 @@
 {
-  "posts": [
+  "orders": [
     {
-      "id": "5fd44bf3-f159-42eb-9014-ebe490610912",
-      "author": {
-        "id": 1,
-        "name": "Batman",
-        "image": "./assets/img/batman-profile.png"
-      },
-      "post": {
-        "date": 1617926869849,
-        "content": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis condimentum. Maecenas malesuada, mi id tempus consequat, ex nunc rhoncus arcu, at vehicula lorem mi eu magna.",
-        "image": "./assets/img/batman-post.jpg",
-        "likes": 3,
-        "comments": [
-          {
-            "id": "7509f012-5a0b-4742-8de6-6bbf6b6d548c",
-            "image": "./assets/img/spider-man.png",
-            "name": "Spider Man",
-            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis condimentum"
-          },
-          {
-            "id": "556",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste"
-          },
-          {
-            "id": "629",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Olá"
-          },
-          {
-            "id": "276",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste2"
-          },
-          {
-            "id": "125",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste 3"
-          },
-          {
-            "id": "19",
-            "image": "https://avatars.githubusercontent.com/u/17815?v=4",
-            "name": "mpj",
-            "comment": "Hello"
-          },
-          {
-            "id": "807",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste 4"
-          },
-          {
-            "id": "912",
-            "image": "https://avatars.githubusercontent.com/u/48728115?v=4",
-            "name": "pinhaum",
-            "comment": "Oi eu sou o pinhaum"
-          },
-          {
-            "id": "739",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "xD"
-          }
-        ]
-      }
+      "id": "02392039230",
+      "deliveryMan": "isjjiijdakmlkdms",
+      "platform": "99Food",
+      "status": "requested",
+      "createdAt": 1627161714113,
+      "updatedAt": 1627161714113
     },
     {
-      "id": "5fd44bf3-f159-42eb-9014-ebe490610912",
-      "author": {
-        "id": 1,
-        "name": "Batman 2",
-        "image": "./assets/img/batman-profile.png"
-      },
-      "post": {
-        "date": 1617926869849,
-        "content": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis condimentum. Maecenas malesuada, mi id tempus consequat, ex nunc rhoncus arcu, at vehicula lorem mi eu magna.",
-        "image": "./assets/img/batman-post.jpg",
-        "likes": 3,
-        "comments": [
-          {
-            "id": "7509f012-5a0b-4742-8de6-6bbf6b6d548c",
-            "image": "./assets/img/spider-man.png",
-            "name": "Spider Man",
-            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend id massa quis condimentum"
-          },
-          {
-            "id": "556",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste"
-          },
-          {
-            "id": "629",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Olá"
-          },
-          {
-            "id": "276",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste2"
-          },
-          {
-            "id": "125",
-            "image": "https://avatars.githubusercontent.com/u/11162653?v=4",
-            "name": "Gtosta96",
-            "comment": "Teste 3"
-          },
-          {
-            "id": "19",
-            "image": "https://avatars.githubusercontent.com/u/17815?v=4",
-            "name": "mpj",
-            "comment": "Hello"
-          }
-        ]
-      }
+      "id": "0239203923032323",
+      "deliveryMan": "isjjiijdakmlkdms",
+      "platform": "99Food",
+      "status": "requested",
+      "createdAt": 1627161816176,
+      "updatedAt": 1627161816176
+    },
+    {
+      "id": "1232",
+      "deliveryMan": "3",
+      "platform": "ifood",
+      "status": "requested",
+      "createdAt": 1627162195460,
+      "updatedAt": 1627162195460
+    },
+    {
+      "id": "923",
+      "deliveryMan": "dwawd",
+      "platform": "99Food",
+      "status": "requested",
+      "createdAt": 1627162399513,
+      "updatedAt": 1627162399513
+    },
+    {
+      "id": "289",
+      "deliveryMan": "Bruno Henrique",
+      "platform": "ifood",
+      "status": "Em Preparação",
+      "createdAt": 1627165077368,
+      "updatedAt": 1627165077368
+    },
+    {
+      "id": "12",
+      "deliveryMan": "212",
+      "platform": "ifood",
+      "status": "Em Preparação",
+      "createdAt": 1627166547900,
+      "updatedAt": 1627166547900
+    },
+    {
+      "id": "2",
+      "deliveryMan": "2",
+      "platform": "99Food",
+      "status": "Em Preparação",
+      "createdAt": 1627166764405,
+      "updatedAt": 1627166764405
+    },
+    {
+      "id": "090",
+      "deliveryMan": "12",
+      "platform": "99Food",
+      "status": "Em Preparação",
+      "createdAt": 1627166818099,
+      "updatedAt": 1627166818099
     }
   ]
 }

@@ -1,14 +1,17 @@
 import React, { createContext, useState } from "react";
+import { Order } from "../services/orders/types";
 import { AppContextProviderProps } from "./types";
 
 export interface AppContextState {
-  messages: string[];
-  setMessages: (messages: AppContextState[`messages`]) => void;
+  orders: Order[];
+  setOrders: (orders: AppContextState[`orders`]) => void;
+  updateOrder: (order: Order, partialOrder: Partial<Order>) => void;
 }
 
 export const APP_CONTEXT_INITIAL_VALUES: AppContextState = {
-  messages: [],
-  setMessages: undefined,
+  orders: [],
+  setOrders: undefined,
+  updateOrder: undefined,
 };
 
 export const AppContext = createContext<AppContextState>(
@@ -16,13 +19,27 @@ export const AppContext = createContext<AppContextState>(
 );
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [messages, setMessages] = useState<AppContextState[`messages`]>([
-    `message1`,
-    `messag9999999`,
-  ]);
+  const [orders, setOrders] = useState<AppContextState[`orders`]>([]);
+
+  function updateOrder(order: Order, partialOrder: Partial<Order>) {
+    const newOrders = orders.map((o) => {
+      if (o.id === order.id) {
+        return {
+          ...o,
+          ...partialOrder,
+        };
+      }
+
+      return o;
+    });
+
+    setOrders(newOrders);
+  }
+
   const appContextState: AppContextState = {
-    messages,
-    setMessages,
+    orders,
+    setOrders,
+    updateOrder,
   };
 
   return (

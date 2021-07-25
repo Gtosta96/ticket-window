@@ -1,7 +1,5 @@
-import React from "react";
 import "./index.css";
 import styled from "styled-components";
-import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 
 const Header = styled.h1`
   font-size: 5.25rem;
@@ -26,11 +24,7 @@ const Divisor = styled.div`
 export default function ChamadaCard() {
   return (
     <div className="card">
-      <Header>
-        <NotificationsActiveOutlinedIcon className="sino" />
-        {"  "}ATENÇÃO{"  "}
-        <NotificationsActiveOutlinedIcon className="sino" />
-      </Header>
+      <Header>ATENÇÃO</Header>
       <Divisor />
       <div className="inf">
         <Alerta>

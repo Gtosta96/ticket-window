@@ -1,5 +1,6 @@
 import "./visualizacao.css";
-import ChamadaCard from "../../shared/ChamadaCard";
+import ChamadaCard from "../display/ChamadaCard";
+
 function PedidosVisualiza() {
   return (
     <>

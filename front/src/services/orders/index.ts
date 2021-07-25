@@ -1,60 +1,71 @@
-import { DeliveryPlatforms, GetOrdersRequest, OrderStatus } from "./types";
+import { api } from "..";
+import { GetOrdersRequest, Order } from "./types";
 
 export const ordersMock: GetOrdersRequest = {
   orders: [
     {
       id: `4561`,
       deliveryMan: `Gabriel`,
-      clientName: `João`,
-      platform: DeliveryPlatforms.IFOOD,
-      status: OrderStatus.REQUESTED,
+      platform: "ifood",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
     {
       id: `2867`,
       deliveryMan: `Guilherme`,
-      clientName: `Gabriel`,
-      platform: DeliveryPlatforms.NINENINE_FOOD,
-      status: OrderStatus.SENT,
+      platform: "99",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
     {
       id: `22378`,
       deliveryMan: `João`,
-      clientName: `Pedro`,
-      platform: DeliveryPlatforms.NINENINE_FOOD,
-      status: OrderStatus.SENT,
+      platform: "ifood",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
     {
       id: `7827`,
       deliveryMan: `Pedro`,
-      clientName: `João`,
-      platform: DeliveryPlatforms.NINENINE_FOOD,
-      status: OrderStatus.SENT,
+      platform: "ifood",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
     {
       id: `78532`,
       deliveryMan: `Rafael`,
-      clientName: `João`,
-      platform: DeliveryPlatforms.NINENINE_FOOD,
-      status: OrderStatus.SENT,
+      platform: "ifood",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
     {
       id: `75382`,
       deliveryMan: `Gustavo`,
-      clientName: `Saraiva`,
-      platform: DeliveryPlatforms.NINENINE_FOOD,
-      status: OrderStatus.SENT,
+      platform: "ifood",
+      status: `Em Preparação`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
   ],
 };
+
+export async function saveOrder(order: Order): Promise<Order> {
+  const payload: Order = {
+    ...order,
+    status: `Em Preparação`,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+  };
+
+  const response = await api<Order>("http://localhost:3333/orders", {
+    method: `POST`,
+    body: JSON.stringify(payload),
+  });
+
+  return response;
+}

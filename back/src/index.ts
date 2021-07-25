@@ -18,13 +18,13 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 const router = jsonServer.router(path.join(__dirname, "db/db.json"));
 
-server.use((req, res, next) => {
-  if (req.method === `POST`) {
-    io.sockets.emit("STATUS_CHANGED", "everyone");
-  }
+// server.use((req, res, next) => {
+//   if (req.method === `POST`) {
+//     io.sockets.emit("STATUS_CHANGED", "everyone");
+//   }
 
-  next();
-});
+//   next();
+// });
 
 server.use(router);
 

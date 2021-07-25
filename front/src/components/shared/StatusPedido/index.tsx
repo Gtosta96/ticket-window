@@ -59,11 +59,6 @@ export default function StatusPedido(props: CardProps) {
         }
       />
 
-      <Typography component="div" variant="subtitle2" className={classes.data}>
-        <b>Nome</b>
-        {props.order.clientName}
-      </Typography>
-
       <Typography component="div" className={classes.data}>
         <b>Plataforma</b>
         {props.order.platform}

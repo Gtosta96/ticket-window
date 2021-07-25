@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./gerencia.css";
-import FormAddPedidos from "../../shared/formAddPedidos";
-import FormTempoEspera from "../../shared/formTempoEspera";
-import PedidoCard from "../../shared/PedidoCard";
+import AddOrderForm from "./AddOrderForm";
+import FormTempoEspera from "./formTempoEspera";
+import PedidoCard from "./PedidoCard";
 
 import { ordersMock } from "../../../services/orders";
+import { Box, Typography } from "@material-ui/core";
+import { AppContext } from "../../../context/AppContext";
 
 function PedidosGerencia() {
-  return (
-    <>
-      <div className="botoes">
-        <h1>GERENCIAMENTO DE PEDIDOS</h1>
-        <div>
-          <FormAddPedidos />
-          <FormTempoEspera />
-        </div>
-      </div>
+  const appContext = useContext(AppContext);
 
-      <div className="gerencia">
+  return (
+    <Box padding="2rem" flexGrow={1}>
+      <Box display="flex" justifyContent="space-around">
+        <Typography variant="h4">Gerenciamento de Pedidos</Typography>
+        <AddOrderForm />
+        {/* <FormTempoEspera /> */}
+      </Box>
+
+      <Box display="flex" gridGap="1rem" flexWrap="wrap" padding="30px">
+        {appContext.orders.map((order) => (
+          <PedidoCard key={order.id} order={order} />
+        ))}
+      </Box>
+
+      {/* <div className="gerencia">
         {ordersMock.orders.map((order) => (
           <PedidoCard key={order.id} order={order} />
         ))}
-      </div>
-    </>
+      </div> */}
+    </Box>
   );
 }
 
