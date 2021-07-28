@@ -1,8 +1,7 @@
-import { createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import { ordersMock } from "../../../services/orders";
-import StatusPedido from "../../shared/StatusPedido";
-import ChamadaCard from "../display/ChamadaCard";
+import { ordersMock } from "../../../../services/orders";
+import OrderItem from "../OrderItem";
 
 const useStyles = makeStyles((theme) => ({
   emissaoTela: {
@@ -47,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PedidosEmissao() {
+function OrdersList() {
   const classes = useStyles();
 
   return (
@@ -63,14 +62,13 @@ function PedidosEmissao() {
           <Typography variant="h4">
             <b>TEMPO ESTIMADO: 16 MINUTOS</b>
           </Typography>
-          {/* <ChamadaCard /> */}
         </div>
       </div>
       <div>
         <div className={classes.titulo}>ULTIMOS PEDIDOS CHAMADOS</div>
         <div className={classes.PedidosChamados}>
           {ordersMock.orders.map((order) => (
-            <StatusPedido key={order.id} order={order} />
+            <OrderItem key={order.id} order={order} />
           ))}
         </div>
       </div>
@@ -78,4 +76,4 @@ function PedidosEmissao() {
   );
 }
 
-export default PedidosEmissao;
+export default OrdersList;

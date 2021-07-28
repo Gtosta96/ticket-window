@@ -1,174 +1,109 @@
-import React from "react";
-import clsx from "clsx";
-import {
-  makeStyles,
-  useTheme,
-  Theme,
-  createStyles,
-} from "@material-ui/core/styles";
+import React, { ReactNode } from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import SidebarData from "./helpers";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 
-const drawerWidth = 300;
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import sidebarItems from "./helpers";
+import { useHistory } from "react-router-dom";
+import { Box } from "@material-ui/core";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-    appBar: {
-      transition: theme.transitions.create(["margin", "width"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      transition: theme.transitions.create(["margin", "width"], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    hide: {
-      display: "none",
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-    drawerHeader: {
-      display: "flex",
-      alignItems: "center",
-      padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
-      justifyContent: "flex-end",
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginLeft: -drawerWidth,
-    },
-    contentShift: {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    },
-    offset: theme.mixins.toolbar,
-  })
-);
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  list: {
+    width: 250,
+  },
+}));
 
-export default function Layout() {
+type Anchor = "left";
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
+  const { push } = useHistory();
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  const [state, setState] = React.useState({
+    left: false,
+  });
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  const LinkMenu = styled(Link)`
-    background: #ffffff;
-    height: 60px;
-    padding-left: 3rem;
-    display: flex;
-    align-items: flex-start;
-    text-decoration: none;
-    color: #272626;
-    font-size: 18px;
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
 
-    &:hover {
-      background: #3f51b5;
-      cursor: pointer;
-      color: #ffffff;
-    }
-  `;
+      setState({ ...state, [anchor]: open });
+    };
+
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+    <Box>
+      <React.Fragment>
+        <Box className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer("left", true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
+                Sistema de Gerenciamento de Pedidos - SGP
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </Box>
+
+        <Drawer
+          anchor={"left"}
+          open={state["left"]}
+          onClose={toggleDrawer("left", false)}
+        >
+          <Box
+            className={classes.list}
+            role="presentation"
+            onClick={toggleDrawer("left", false)}
+            onKeyDown={toggleDrawer("left", false)}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Sistema de Gerenciamento de Pedidos - SGP
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.offset} />
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {SidebarData.map((data) => {
-            return (
-              <LinkMenu key={data.key} to={data.path}>
-                <ListItem>
-                  <ListItemIcon>{data.icon}</ListItemIcon>
-                  <ListItemText primary={data.title} />
+            <List>
+              {sidebarItems.map((item) => (
+                <ListItem button key={item.key} onClick={() => push(item.path)}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.title} />
                 </ListItem>
-              </LinkMenu>
-            );
-          })}
-        </List>
-        <Divider />
-      </Drawer>
-    </div>
+              ))}
+            </List>
+          </Box>
+        </Drawer>
+      </React.Fragment>
+
+      <Box display="flex" flexDirection="column" padding="2rem" flexGrow={1}>
+        {children}
+      </Box>
+    </Box>
   );
 }

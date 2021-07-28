@@ -1,4 +1,3 @@
-import { api } from "..";
 import { GetOrdersRequest, Order } from "./types";
 
 export const ordersMock: GetOrdersRequest = {
@@ -62,10 +61,11 @@ export async function saveOrder(order: Order): Promise<Order> {
     updatedAt: Date.now(),
   };
 
-  const response = await api<Order>("http://localhost:3333/orders", {
-    method: `POST`,
-    body: JSON.stringify(payload),
-  });
+  // const response = await api<Order>("http://localhost:3333/orders", {
+  //   method: `POST`,
+  //   body: JSON.stringify(payload),
+  // });
 
-  return response;
+  // return response;
+  return payload;
 }

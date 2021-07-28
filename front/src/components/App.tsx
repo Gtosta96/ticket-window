@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from "./layout";
-import PedidosEmissao from "./pages/pedidosEmissao";
-import PedidosGerencia from "./pages/pedidosGerencia";
-import PedidosVisualiza from "./pages/pedidosVisualiza";
+import Management from "./pages/management";
+import History from "./pages/history";
 import Display from "./pages/display";
 import AppContextProvider from "../context/AppContext";
 import Socket from "./pages/Socket";
@@ -16,15 +15,15 @@ function App() {
       <CssBaseline />
 
       <Router>
-        <Layout />
-
         <AppContextProvider>
-          <Switch>
-            <Route path={PATHS.TICKETS} exact component={PedidosEmissao} />
-            <Route path={PATHS.MANAGEMENT} exact component={PedidosGerencia} />
-            <Route path={PATHS.DISPLAY} exact component={PedidosVisualiza} />
-            <Route path="/socket" component={Socket} />
-          </Switch>
+          <Layout>
+            <Switch>
+              <Route path={PATHS.MANAGEMENT} exact component={Management} />
+              <Route path={PATHS.DISPLAY} exact component={Display} />
+              <Route path={PATHS.HISTORY} exact component={History} />
+              <Route path="/socket" component={Socket} />
+            </Switch>
+          </Layout>
         </AppContextProvider>
       </Router>
     </>

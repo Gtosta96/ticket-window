@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function StatusPedido(props: CardProps) {
+export default function OrderItem(props: CardProps) {
   const classes = useStyles();
 
   return (

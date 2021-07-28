@@ -1,11 +1,10 @@
-import React from "react";
 import * as FiIcons from "react-icons/fi";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import { ISideBarData } from "./types";
 import { PATHS } from "../../config/paths";
 
-const SidebarData: ISideBarData[] = [
+const sidebarItems: ISideBarData[] = [
   {
     key: 0,
     title: "Gerenciamento",
@@ -14,15 +13,15 @@ const SidebarData: ISideBarData[] = [
   },
   {
     key: 1,
-    title: "Controle",
-    path: PATHS.TICKETS,
-    icon: <FiIcons.FiSend />,
-  },
-  {
-    key: 2,
     title: "Display",
     path: PATHS.DISPLAY,
     icon: <IoIcons.IoIosPaper />,
   },
+  {
+    key: 2,
+    title: "Histórico",
+    path: PATHS.HISTORY,
+    icon: <FiIcons.FiSend />,
+  },
 ];
-export default SidebarData;
+export default sidebarItems;

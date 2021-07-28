@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../../../assets/css/index.css";
 import {
   DialogTitle,
   DialogContentText,

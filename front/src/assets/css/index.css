@@ -13,3 +13,7 @@ body {
   color: var(--base-light);
   background-color: #d1d1d1;
 }
+
+#root {
+  min-height: 100vh;
+}
