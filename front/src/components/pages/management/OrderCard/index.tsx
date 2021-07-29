@@ -15,6 +15,7 @@ import { AppContext } from "../../../../context/AppContext";
 const useStyles = makeStyles({
   root: {
     margin: "0.5rem",
+    boxShadow: "1px 1px 5px #888888",
   },
   title: {
     fontSize: 14,
