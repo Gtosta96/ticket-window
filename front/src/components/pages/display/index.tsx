@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import OrderAlert from "./OrderAlert";
-import { Box, makeStyles, Typography } from "@material-ui/core";
+import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import { AppContext } from "../../../context/AppContext";
 import OrderCard from "../management/OrderCard";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   infoText: {
     fontSize: "2.25rem",
     padding: "0.25rem",
@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "800px",
     marginTop: "5px",
     padding: "1rem",
-    border: "0.5px solid #2f39c2",
+    border: `0.5px solid ${theme.palette.primary.main}`,
     borderRadius: "5px",
     boxShadow: "3px 3px 20px #888888",
     textAlign: "center",
-    borderTop: "10px solid #2f39c2",
+    borderTop: `10px solid ${theme.palette.primary.main}`,
   },
   containerTimer: {
     backgroundColor: "#FBFBFB",
@@ -27,14 +27,13 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "800px",
     marginTop: "5px",
     padding: "1rem",
-    border: "0.5px solid #2f39c2",
+    border: `0.5px solid ${theme.palette.primary.main}`,
     borderRadius: "5px",
     boxShadow: "3px 3px 20px #888888",
-    textShadow: "#2f39c2 1rem 0rem 3rem",
     fontFamily: "Ubuntu",
     fontSize: "10rem",
     textAlign: "center",
-    borderTop: "10px solid #2f39c2",
+    borderTop: `10px solid ${theme.palette.primary.main}`,
     fontWeight: "bold",
   },
   ImageLogo: {
@@ -42,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
     borderRadius: "1000px",
     transform: "rotate( 30deg )",
-    borderTop: "10px solid #2f39c2",
+    borderTop: `10px solid ${theme.palette.primary.main}`,
     boxShadow: "3px 3px 20px #888888",
-    border: "2px solid #2f39c2",
+    border: `0.5px solid ${theme.palette.primary.main}`,
   },
 }));
 
@@ -56,7 +55,6 @@ function Display() {
     <Box display="flex" justifyContent="space-evenly" position="relative">
       <Box display="flex" flexDirection="column">
         {/* CARD DE CHAMADA DE PEDIDO QUANDO O BALCAO CHAMAR */}
-        <OrderAlert />
 
         <Typography variant="h2" className={classes.infoText}>
           Pedidos prontos para retirada
@@ -91,6 +89,7 @@ function Display() {
           </Box>
         </Box>
       </Box>
+      <OrderAlert />
     </Box>
   );
 }

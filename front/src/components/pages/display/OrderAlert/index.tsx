@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: "#000095",
     color: "#F4F2FF",
     borderBottom: "3px solid #333",
-    textShadow: "black 1rem 0rem 1rem",
   },
   alert: {
     fontSize: "4.25rem",
@@ -34,15 +33,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: "#ff001e",
     textAlign: "center",
     textTransform: "uppercase",
-    textShadow: "black 1rem 0rem 3rem",
     fontWeight: "bold",
   },
   withdraw: {
     fontSize: "5.25rem",
-    padding: "0 0 0 5rem",
-    textShadow: "black 1rem 0rem 3rem",
+    padding: "3rem 0 0 5.5rem",
     fontWeight: "bold",
     textDecoration: "underline",
+    textAlign: "center",
   },
 }));
 
@@ -55,8 +53,9 @@ export default function OrderAlert() {
       <Box fontWeight={900} display="flex" flexDirection="column">
         <Typography className={classes.ticket}>PEDIDO NÚMERO</Typography>
         <Typography className={classes.number}>5502</Typography>
-        <Typography className={classes.withdraw}>FAVOR RETIRAR</Typography>
-        <Typography className={classes.withdraw}>PEDIDO NO BALCÃO</Typography>
+        <Typography className={classes.withdraw}>
+          FAVOR RETIRAR PEDIDO NO BALCÃO
+        </Typography>
       </Box>
     </Box>
   );
