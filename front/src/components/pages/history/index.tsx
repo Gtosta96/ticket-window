@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
-import { ordersMock } from "../../../services/orders";
 import OrderCard from "../management/OrderCard";
-import OrderItem from "./OrderItem";
 
 function History() {
   const appContext = useContext(AppContext);

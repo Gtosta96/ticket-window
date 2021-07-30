@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   list: {
     width: 250,
+    borderTop: "1px solid #333",
+    borderBottom: "1px solid #333",
+  },
+  ImageLogo: {
+    width: 150,
   },
 }));
 
@@ -83,6 +88,13 @@ export default function Layout({ children }: LayoutProps) {
           open={state["left"]}
           onClose={toggleDrawer("left", false)}
         >
+          <Box display="flex" justifyContent="center">
+            <img
+              className={classes.ImageLogo}
+              src="./assets/img/logo2.jpg"
+              alt="logo"
+            />
+          </Box>
           <Box
             className={classes.list}
             role="presentation"
