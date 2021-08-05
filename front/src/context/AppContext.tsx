@@ -29,10 +29,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
           ...partialOrder,
         };
       }
-
       return o;
     });
-
     setOrders(newOrders);
   }
 

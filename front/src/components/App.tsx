@@ -8,6 +8,7 @@ import AppContextProvider from "../context/AppContext";
 import Socket from "./pages/Socket";
 import { CssBaseline } from "@material-ui/core";
 import { PATHS } from "../config/paths";
+import Root from "./pages/Root/index";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path={PATHS.DISPLAY} exact component={Display} />
               <Route path={PATHS.HISTORY} exact component={History} />
               <Route path="/socket" component={Socket} />
+              <Route path="/" exact component={Root} />
             </Switch>
           </Layout>
         </AppContextProvider>
