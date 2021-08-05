@@ -44,6 +44,7 @@ export default function AddOrderForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<AddOrderFormData>();
 
@@ -55,10 +56,14 @@ export default function AddOrderForm() {
     setOpen(false);
   };
 
-  const onSubmit = async (data: AddOrderFormData) => {
-    console.log("okwekowe");
-    const savedOrder = await saveOrder(data);
-    appContext.setOrders([...appContext.orders, savedOrder]);
+  const onSubmit = (data: AddOrderFormData) => {
+    // const savedOrder = await saveOrder(data);
+    const savedOrder = data;
+    appContext.setOrders([
+      ...appContext.orders,
+      { ...savedOrder, status: "Em Preparação" },
+    ]);
+    reset();
     handleClose();
   };
 
@@ -113,7 +118,6 @@ export default function AddOrderForm() {
             <FormControl
               component="fieldset"
               margin="normal"
-              {...register("platform", { required: true })}
               error={!!errors.platform}
             >
               <FormLabel component="legend">Plataforma</FormLabel>
@@ -128,6 +132,7 @@ export default function AddOrderForm() {
                     value={deliveryPlatform.value}
                     label={deliveryPlatform.label}
                     control={<Radio />}
+                    {...register("platform", { required: true })}
                   />
                 ))}
               </RadioGroup>

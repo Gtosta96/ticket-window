@@ -89,7 +89,7 @@ function Display() {
           </Box>
         </Box>
       </Box>
-      <OrderAlert />
+      {/* <OrderAlert /> */}
     </Box>
   );
 }
