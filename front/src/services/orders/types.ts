@@ -1,7 +1,8 @@
 export const deliveryPlatforms = [
-  { label: "ifood", value: "ifood" },
+  { label: "iFood", value: "iFood" },
   { label: "Uber Eats", value: "Uber Eats" },
   { label: "99Food", value: "99Food" },
+  { label: "Interno", value: "Interno" },
 ];
 
 export type OrderStatus =

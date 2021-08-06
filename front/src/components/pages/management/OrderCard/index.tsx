@@ -43,7 +43,8 @@ export default function OrderCard({ order, list }: CardProps) {
   }
 
   function onSentClick() {
-    appContext.updateOrder(order, { status: "Entregue ao Motoboy" });
+    // appContext.updateOrder(order, { status: "Entregue ao Motoboy" });
+    appContext.deleteOrder(order);
   }
 
   return (

@@ -14,7 +14,7 @@ function Management() {
         <Typography variant="h4">Gerenciamento de Pedidos</Typography>
       </Box>
 
-      <Box display="flex">
+      <Box display="flex" flexWrap="wrap">
         {appContext.orders.length > 0 ? (
           appContext.orders.map((order) => (
             <OrderCard key={order.id} order={order} />

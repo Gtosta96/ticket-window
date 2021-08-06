@@ -45,6 +45,7 @@ export default function AddOrderForm() {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm<AddOrderFormData>();
 
@@ -59,14 +60,13 @@ export default function AddOrderForm() {
   const onSubmit = (data: AddOrderFormData) => {
     // const savedOrder = await saveOrder(data);
     const savedOrder = data;
-    appContext.setOrders([
-      ...appContext.orders,
-      { ...savedOrder, status: "Em Preparação" },
-    ]);
+    appContext.addOrder({ ...savedOrder, status: "Em Preparação" });
+
     reset();
     handleClose();
   };
 
+  console.log(getValues());
   return (
     <>
       <Fab
@@ -124,7 +124,7 @@ export default function AddOrderForm() {
               <RadioGroup
                 name="platform"
                 row
-                defaultValue={deliveryPlatforms[0].value}
+                {...register("platform", { required: true })}
               >
                 {deliveryPlatforms.map((deliveryPlatform) => (
                   <FormControlLabel
@@ -132,7 +132,6 @@ export default function AddOrderForm() {
                     value={deliveryPlatform.value}
                     label={deliveryPlatform.label}
                     control={<Radio />}
-                    {...register("platform", { required: true })}
                   />
                 ))}
               </RadioGroup>
