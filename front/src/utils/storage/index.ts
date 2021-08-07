@@ -1,11 +1,11 @@
-export type Storage = "orders";
+export type StorageKeys = "orders" | "waitingTime";
 
 function storageFn() {
-  function get(key: Storage) {
+  function get(key: StorageKeys) {
     return JSON.parse(localStorage.getItem(key));
   }
 
-  function set(key: Storage, value: unknown): void {
+  function set(key: StorageKeys, value: unknown): void {
     return localStorage.setItem(key, JSON.stringify(value));
   }
 

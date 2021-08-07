@@ -1,4 +1,9 @@
 import { ReactNode } from "react";
-export interface AppContextProviderProps {
+
+export interface OrdersContextProviderProps {
+  children: ReactNode;
+}
+
+export interface SettingsContextProviderProps {
   children: ReactNode;
 }

@@ -1,30 +1,32 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
+import { useSync } from "../hooks/useSync";
 import { Order } from "../services/orders/types";
 import storage from "../utils/storage";
-import { AppContextProviderProps } from "./types";
+import { OrdersContextProviderProps } from "./types";
 
-export interface AppContextState {
+export interface OrdersContextState {
   orders: Order[];
   addOrder: (orders: Order) => void;
   updateOrder: (order: Order, partialOrder: Partial<Order>) => void;
   deleteOrder: (order: Order) => void;
 }
 
-export const APP_CONTEXT_INITIAL_VALUES: AppContextState = {
+export const ORDERS_CONTEXT_INITIAL_VALUES: OrdersContextState = {
   orders: [],
   addOrder: undefined,
   updateOrder: undefined,
   deleteOrder: undefined,
 };
 
-export const AppContext = createContext<AppContextState>(
-  APP_CONTEXT_INITIAL_VALUES
+export const OrdersContext = createContext<OrdersContextState>(
+  ORDERS_CONTEXT_INITIAL_VALUES
 );
 
-const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [orders, setOrders] = useState<AppContextState[`orders`]>([]);
+const OrdersContextProvider = ({ children }: OrdersContextProviderProps) => {
+  const [orders, setOrders] = useState<OrdersContextState[`orders`]>([]);
 
+  // useSync("orders", orders, setOrders);
   useEffect(() => {
     const callback = () => {
       const storageOrders = storage.get("orders");
@@ -37,7 +39,6 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
       }
     };
 
-    console.log("set callback");
     window.addEventListener("storage", callback);
 
     return () => {
@@ -71,7 +72,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setOrders(newOrders);
   }
 
-  const appContextState: AppContextState = {
+  const ordersContextState: OrdersContextState = {
     orders,
     addOrder,
     updateOrder,
@@ -79,10 +80,10 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   };
 
   return (
-    <AppContext.Provider value={appContextState}>
+    <OrdersContext.Provider value={ordersContextState}>
       {children}
-    </AppContext.Provider>
+    </OrdersContext.Provider>
   );
 };
 
-export default AppContextProvider;
+export default OrdersContextProvider;

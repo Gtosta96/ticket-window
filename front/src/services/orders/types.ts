@@ -12,12 +12,18 @@ export type OrderStatus =
   | "Cancelado";
 
 export type Order = {
-  id: string | number;
+  id: string;
+  orderNumber: string;
   deliveryMan: string;
   platform: string;
   status: OrderStatus;
   createdAt: number;
-  updatedAt: number;
+
+  readyAt?: number;
+  deliveryAt?: number;
+  updatedAt?: number;
+
+  alerts?: number;
 };
 
 export type AddOrderRequest = Order;

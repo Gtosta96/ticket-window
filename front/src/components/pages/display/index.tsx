@@ -1,67 +1,95 @@
-import { useContext } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import OrderAlert from "./OrderAlert";
-import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
-import { AppContext } from "../../../context/AppContext";
+import { Box, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
+import { OrdersContext } from "../../../context/OrdersContext";
 import OrderCard from "../management/OrderCard";
+import { differenceInSeconds } from "date-fns";
+import { Order } from "../../../services/orders/types";
+import { SettingsContext } from "../../../context/SettingsContext";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  infoText: {
-    fontSize: "2.25rem",
-    padding: "0.25rem",
+  header: {
+    fontWeight: "normal",
+    textAlign: "center",
+    textTransform: "uppercase",
   },
   containerOrderCard: {
-    backgroundColor: "#FBFBFB",
-    height: "80vh",
-    minWidth: "800px",
-    marginTop: "5px",
     padding: "1rem",
-    border: `0.5px solid ${theme.palette.primary.main}`,
-    borderRadius: "5px",
-    boxShadow: "3px 3px 20px #888888",
-    textAlign: "center",
     borderTop: `10px solid ${theme.palette.primary.main}`,
+    textAlign: "center",
   },
   containerTimer: {
-    backgroundColor: "#FBFBFB",
-    height: "30vh",
-    minWidth: "800px",
-    marginTop: "5px",
     padding: "1rem",
-    border: `0.5px solid ${theme.palette.primary.main}`,
-    borderRadius: "5px",
-    boxShadow: "3px 3px 20px #888888",
-    fontFamily: "Ubuntu",
-    fontSize: "10rem",
-    textAlign: "center",
     borderTop: `10px solid ${theme.palette.primary.main}`,
+    textAlign: "center",
     fontWeight: "bold",
+    textTransform: "uppercase",
   },
-  ImageLogo: {
-    height: "30rem",
-    width: "auto",
-    borderRadius: "1000px",
-    transform: "rotate( 30deg )",
+  imageLogo: {
+    borderRadius: "100%",
+    transform: "rotate(30deg)",
     borderTop: `10px solid ${theme.palette.primary.main}`,
     boxShadow: "3px 3px 20px #888888",
     border: `0.5px solid ${theme.palette.primary.main}`,
   },
 }));
 
+function getOrdersToAlert(orders: Order[]) {
+  const ordersToAlert = orders.filter((order) => {
+    const diffInSeconds = differenceInSeconds(
+      new Date(),
+      new Date(order.updatedAt)
+    );
+
+    return order.alerts === 0 || diffInSeconds >= 30;
+  });
+
+  return ordersToAlert;
+}
+
 function Display() {
-  const appContext = useContext(AppContext);
   const classes = useStyles();
+  const ordersContext = useContext(OrdersContext);
+  const settingsContext = useContext(SettingsContext);
+
+  const [ordersToAlertQueue, setOrdersToAlertQueue] = useState<Order[]>([]);
+
+  const readyOrders = useMemo(
+    () => ordersContext.orders.filter((order) => order.status === "Preparado"),
+    [ordersContext.orders]
+  );
+
+  useEffect(() => {
+    const ordersToAlert = getOrdersToAlert(readyOrders);
+    setOrdersToAlertQueue(ordersToAlert);
+  }, [readyOrders]);
+
+  useEffect(() => {
+    const timeout = setInterval(() => {
+      const ordersToAlert = getOrdersToAlert(readyOrders);
+      setOrdersToAlertQueue(ordersToAlert);
+    }, 3000);
+
+    return () => {
+      clearInterval(timeout);
+    };
+  }, [readyOrders]);
 
   return (
-    <Box display="flex" justifyContent="space-evenly" position="relative">
+    <Box
+      display="flex"
+      gridGap="2rem"
+      flexGrow={1}
+      maxWidth="1280px"
+      margin="0 auto"
+    >
       <Box display="flex" flexDirection="column">
-        {/* CARD DE CHAMADA DE PEDIDO QUANDO O BALCAO CHAMAR */}
-
-        <Typography variant="h2" className={classes.infoText}>
+        <Typography variant="h3" className={classes.header} gutterBottom>
           Pedidos prontos para retirada
         </Typography>
-        <Typography component="div" className={classes.containerOrderCard}>
-          {appContext.orders.length > 0 ? (
-            appContext.orders.map((order) => (
+        <Paper className={classes.containerOrderCard}>
+          {readyOrders.length > 0 ? (
+            readyOrders.map((order) => (
               <OrderCard key={order.id} order={order} list />
             ))
           ) : (
@@ -69,27 +97,32 @@ function Display() {
               Nenhum pedido
             </Typography>
           )}
-        </Typography>
+        </Paper>
       </Box>
 
-      <Box>
-        <Box display="flex" flexDirection="column">
-          <Typography variant="h2" className={classes.infoText}>
-            Tempo estimado de espera
+      <Box display="flex" flexDirection="column">
+        <Typography variant="h3" className={classes.header} gutterBottom>
+          Tempo estimado de espera
+        </Typography>
+
+        <Paper>
+          <Typography variant="h1" className={classes.containerTimer}>
+            {settingsContext.waitingTime} min
           </Typography>
-          <Typography component="div" className={classes.containerTimer}>
-            10 MIN
-          </Typography>
-          <Box display="flex" justifyContent="center" padding="1.5rem">
-            <img
-              className={classes.ImageLogo}
-              src="./assets/img/logo1.jpg"
-              alt="logo"
-            />
-          </Box>
-        </Box>
+        </Paper>
+        {/* <Box display="flex" justifyContent="center" padding="1.5rem">
+          <img
+            // className={classes.imageLogo}
+            src="./assets/img/logo1.jpg"
+            alt="logo"
+            width="100px"
+          />
+        </Box> */}
       </Box>
-      {/* <OrderAlert /> */}
+
+      {ordersToAlertQueue.map((order) => {
+        return <OrderAlert key={order.id} order={order} />;
+      })}
     </Box>
   );
 }

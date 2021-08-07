@@ -1,12 +1,10 @@
 import { makeStyles } from "@material-ui/styles";
-import react from "react";
 
 const useStyles = makeStyles({
   root: {
     margin: "0.5rem auto",
     width: "45vw",
     height: "75vh",
-    boxShadow: "1px 1px 2px #888888",
     justifyContent: "center",
     alignContent: "center",
   },
@@ -22,6 +20,7 @@ const useStyles = makeStyles({
 
 function Root() {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <img className={classes.img} src="./assets/img/ws.png" alt="Logo WS" />

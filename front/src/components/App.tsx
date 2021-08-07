@@ -1,14 +1,15 @@
-import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { CssBaseline } from "@material-ui/core";
+
 import Layout from "./layout";
 import Management from "./pages/management";
 import History from "./pages/history";
 import Display from "./pages/display";
-import AppContextProvider from "../context/AppContext";
-import Socket from "./pages/Socket";
-import { CssBaseline } from "@material-ui/core";
+import Socket from "./pages/socket";
+// import Root from "./pages/root/index";
+
 import { PATHS } from "../config/paths";
-import Root from "./pages/Root/index";
+import RootContextProvider from "../context";
 
 function App() {
   return (
@@ -16,17 +17,18 @@ function App() {
       <CssBaseline />
 
       <Router>
-        <AppContextProvider>
+        <RootContextProvider>
           <Layout>
             <Switch>
+              <Route exact path="/" component={Management} />
+
               <Route path={PATHS.MANAGEMENT} exact component={Management} />
               <Route path={PATHS.DISPLAY} exact component={Display} />
               <Route path={PATHS.HISTORY} exact component={History} />
               <Route path="/socket" component={Socket} />
-              <Route path="/" exact component={Root} />
             </Switch>
           </Layout>
-        </AppContextProvider>
+        </RootContextProvider>
       </Router>
     </>
   );

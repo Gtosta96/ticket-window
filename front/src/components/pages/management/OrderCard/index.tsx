@@ -10,12 +10,13 @@ import {
 } from "@material-ui/core";
 import { SendRounded, TvRounded } from "@material-ui/icons";
 import { CardProps } from "./types";
-import { AppContext } from "../../../../context/AppContext";
+import { OrdersContext } from "../../../../context/OrdersContext";
+import { format } from "date-fns";
 
 const useStyles = makeStyles({
   root: {
     margin: "0.5rem",
-    boxShadow: "1px 1px 5px #888888",
+    minWidth: "200px",
   },
   title: {
     fontSize: 14,
@@ -36,25 +37,39 @@ const useStyles = makeStyles({
 
 export default function OrderCard({ order, list }: CardProps) {
   const classes = useStyles();
-  const appContext = useContext(AppContext);
+  const ordersContext = useContext(OrdersContext);
 
   function onRequestClick() {
-    appContext.updateOrder(order, { status: "Preparado" });
+    const time = new Date().getTime();
+
+    ordersContext.updateOrder(order, {
+      status: "Preparado",
+      readyAt: time,
+      updatedAt: time,
+    });
   }
 
   function onSentClick() {
-    // appContext.updateOrder(order, { status: "Entregue ao Motoboy" });
-    appContext.deleteOrder(order);
+    // const time = new Date().getTime();
+
+    // ordersContext.updateOrder(order, {
+    //   status: "Entregue ao Motoboy",
+    //   deliveryAt: time,
+    //   updatedAt: time,
+    // });
+    ordersContext.deleteOrder(order);
   }
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={list ? classes.list : classes.card}>
-        <Typography className={classes.title} color="textSecondary">
-          Pedido #{order.id}
-        </Typography>
+        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
+          <Typography className={classes.title} color="textSecondary">
+            Pedido #{order.orderNumber}
+          </Typography>
+        </Box>
 
-        <Box>
+        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
           <Typography variant="body1" color="textPrimary">
             Plataforma
           </Typography>
@@ -63,7 +78,7 @@ export default function OrderCard({ order, list }: CardProps) {
           </Typography>
         </Box>
 
-        <Box>
+        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
           <Typography variant="body1" color="textPrimary">
             Motoboy
           </Typography>
@@ -72,12 +87,12 @@ export default function OrderCard({ order, list }: CardProps) {
           </Typography>
         </Box>
 
-        <Box>
+        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
           <Typography variant="body1" color="textPrimary">
-            Tempo do Pedido
+            Última atualização
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            7 Minutos
+            {format(new Date(order.updatedAt), "hh:mm")}
           </Typography>
         </Box>
       </CardContent>

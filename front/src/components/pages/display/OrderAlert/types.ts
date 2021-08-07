@@ -1,5 +1,5 @@
 import { Order } from "../../../../services/orders/types";
 
-export interface CardProps {
+export type OrderAlertProps = {
   order: Order;
-}
+};

@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import AddOrderForm from "./AddOrderForm";
-import FormTempoEspera from "./formTempoEspera";
 import OrderCard from "./OrderCard";
 import { Box, Typography } from "@material-ui/core";
-import { AppContext } from "../../../context/AppContext";
+import { OrdersContext } from "../../../context/OrdersContext";
+import OptionsForm from "./OptionsForm";
 
 function Management() {
-  const appContext = useContext(AppContext);
+  const ordersContext = useContext(OrdersContext);
+
+  const readyOrders = useMemo(
+    () =>
+      ordersContext.orders.filter(
+        (order) =>
+          order.status === `Em Preparação` || order.status === `Preparado`
+      ),
+    [ordersContext.orders]
+  );
 
   return (
     <Box>
@@ -15,10 +24,8 @@ function Management() {
       </Box>
 
       <Box display="flex" flexWrap="wrap">
-        {appContext.orders.length > 0 ? (
-          appContext.orders.map((order) => (
-            <OrderCard key={order.id} order={order} />
-          ))
+        {readyOrders.length > 0 ? (
+          readyOrders.map((order) => <OrderCard key={order.id} order={order} />)
         ) : (
           <Box
             display="flex"
@@ -31,8 +38,9 @@ function Management() {
             </Typography>
           </Box>
         )}
+
         <AddOrderForm />
-        {/* <FormTempoEspera /> */}
+        <OptionsForm />
       </Box>
     </Box>
   );

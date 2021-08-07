@@ -16,9 +16,6 @@ import { useHistory } from "react-router-dom";
 import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -62,56 +59,56 @@ export default function Layout({ children }: LayoutProps) {
     };
 
   return (
-    <Box>
-      <React.Fragment>
-        <Box className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton
-                edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="menu"
-                onClick={toggleDrawer("left", true)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                Sistema de Gerenciamento de Pedidos - SGP
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Box>
-
-        <Drawer
-          anchor={"left"}
-          open={state["left"]}
-          onClose={toggleDrawer("left", false)}
-        >
-          <Box display="flex" justifyContent="center">
-            <img
-              className={classes.ImageLogo}
-              src="./assets/img/logo2.jpg"
-              alt="logo"
-            />
-          </Box>
-          <Box
-            className={classes.list}
-            role="presentation"
-            onClick={toggleDrawer("left", false)}
-            onKeyDown={toggleDrawer("left", false)}
+    <Box display="flex" flexDirection="column" height="100vh" overflow="hidden">
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            onClick={toggleDrawer("left", true)}
           >
-            <List>
-              {sidebarItems.map((item) => (
-                <ListItem button key={item.key} onClick={() => push(item.path)}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.title} />
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Drawer>
-      </React.Fragment>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Sistema de Gerenciamento de Pedidos - SGP
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer
+        anchor={"left"}
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        <Box display="flex" justifyContent="center">
+          <img
+            className={classes.ImageLogo}
+            src="./assets/img/logo2.jpg"
+            alt="logo"
+          />
+        </Box>
+        <Box
+          className={classes.list}
+          role="presentation"
+          onClick={toggleDrawer("left", false)}
+          onKeyDown={toggleDrawer("left", false)}
+        >
+          <List>
+            {sidebarItems.map((item) => (
+              <ListItem
+                button
+                key={item.path}
+                onClick={() => push(item.path)}
+                disabled={item.disabled}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
 
       <Box display="flex" flexDirection="column" padding="2rem" flexGrow={1}>
         {children}

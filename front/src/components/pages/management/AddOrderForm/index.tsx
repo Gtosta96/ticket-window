@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { v4 } from "uuid";
 import {
   DialogTitle,
   DialogContentText,
@@ -20,8 +21,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { deliveryPlatforms } from "../../../../services/orders/types";
 import { useForm } from "react-hook-form";
 import { AddOrderFormData } from "./types";
-import { saveOrder } from "../../../../services/orders";
-import { AppContext } from "../../../../context/AppContext";
+import { OrdersContext } from "../../../../context/OrdersContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddOrderForm() {
   const classes = useStyles();
-  const appContext = useContext(AppContext);
+  const ordersContext = useContext(OrdersContext);
 
   const [open, setOpen] = React.useState(false);
 
@@ -45,7 +45,6 @@ export default function AddOrderForm() {
     register,
     handleSubmit,
     reset,
-    getValues,
     formState: { errors },
   } = useForm<AddOrderFormData>();
 
@@ -60,33 +59,30 @@ export default function AddOrderForm() {
   const onSubmit = (data: AddOrderFormData) => {
     // const savedOrder = await saveOrder(data);
     const savedOrder = data;
-    appContext.addOrder({ ...savedOrder, status: "Em Preparação" });
+    const time = new Date().getTime();
+
+    ordersContext.addOrder({
+      ...savedOrder,
+      id: v4(),
+      status: "Em Preparação",
+      createdAt: time,
+      updatedAt: time,
+      alerts: 0,
+    });
 
     reset();
     handleClose();
   };
 
-  console.log(getValues());
   return (
     <>
-      <Fab
-        color="primary"
-        aria-label="add"
-        onClick={handleClickOpen}
-        className={classes.root}
-      >
+      <Fab color="primary" onClick={handleClickOpen} className={classes.root}>
         <AddIcon />
       </Fab>
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-cria-pedido"
-      >
+      <Dialog open={open} onClose={handleClose} fullWidth>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <DialogTitle id="form-dialog-title">
-            Adicionar novo pedido
-          </DialogTitle>
+          <DialogTitle>Adicionar novo pedido</DialogTitle>
           <DialogContent className={classes.contentContainer}>
             <DialogContentText>
               Preencha os campos abaixo corretamente para adicionar um novo
@@ -94,9 +90,9 @@ export default function AddOrderForm() {
             </DialogContentText>
 
             <TextField
-              {...register("id", { required: true })}
-              error={!!errors.id}
-              helperText={errors.id?.message}
+              {...register("orderNumber", { required: true })}
+              error={!!errors.orderNumber}
+              helperText={errors.orderNumber?.message}
               label="Número do Pedido"
               id="numero-pedido"
               type="number"
