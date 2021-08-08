@@ -18,31 +18,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 9999,
   },
   header: {
-    fontSize: "7.25rem",
     textAlign: "center",
     textTransform: "uppercase",
+    whiteSpace: "nowrap",
   },
-  alert: {
-    fontSize: "4.25rem",
+  text: {
     textAlign: "center",
     textTransform: "uppercase",
-  },
-  ticket: {
-    fontSize: "7.25rem",
-    textAlign: "center",
-    textTransform: "uppercase",
-  },
-  number: {
-    fontSize: "12rem",
-    textAlign: "center",
-    textTransform: "uppercase",
-    fontWeight: "bold",
-  },
-  withdraw: {
-    fontSize: "5.25rem",
-    fontWeight: "bold",
-    textDecoration: "underline",
-    textAlign: "center",
   },
 }));
 
@@ -76,23 +58,26 @@ export default function OrderAlert({ order }: OrderAlertProps) {
         <source src={audioAlert} type="audio/wav" />
       </audio>
 
-      <Box bgcolor="primary.main" color="primary.contrastText">
-        <Typography className={classes.header}>
+      <Box bgcolor="primary.main" color="primary.contrastText" padding="2rem">
+        <Typography variant="h1" className={classes.header}>
           ATENÇÃO {order.deliveryMan}
         </Typography>
       </Box>
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="space-evenly"
+        justifyContent="space-between"
         alignItems="center"
+        padding="2rem 0"
         flexGrow={1}
       >
-        <Typography className={classes.ticket}>PEDIDO NÚMERO</Typography>
-        <Typography className={classes.number} color="error">
-          {order.orderNumber}
-        </Typography>
-        <Typography className={classes.withdraw}>
+        <Box marginBottom="2rem">
+          <Typography variant="h1" className={classes.text} color="error">
+            Pedido # {order.orderNumber} - {order.platform}
+          </Typography>
+        </Box>
+
+        <Typography variant="h1" className={classes.text}>
           RETIRAR PEDIDO NO BALCÃO
         </Typography>
       </Box>

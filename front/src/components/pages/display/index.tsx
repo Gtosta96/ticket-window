@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "1rem",
     borderTop: `10px solid ${theme.palette.primary.main}`,
     textAlign: "center",
+    flexGrow: 1,
   },
   containerTimer: {
     padding: "1rem",
@@ -26,11 +27,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "uppercase",
   },
   imageLogo: {
+    position: "absolute",
+    height: "100%",
     borderRadius: "100%",
-    transform: "rotate(30deg)",
-    borderTop: `10px solid ${theme.palette.primary.main}`,
-    boxShadow: "3px 3px 20px #888888",
-    border: `0.5px solid ${theme.palette.primary.main}`,
   },
 }));
 
@@ -85,7 +84,7 @@ function Display() {
     >
       <Box display="flex" flexDirection="column">
         <Typography variant="h3" className={classes.header} gutterBottom>
-          Pedidos prontos para retirada
+          Prontos para retirada
         </Typography>
         <Paper className={classes.containerOrderCard}>
           {readyOrders.length > 0 ? (
@@ -102,22 +101,28 @@ function Display() {
 
       <Box display="flex" flexDirection="column">
         <Typography variant="h3" className={classes.header} gutterBottom>
-          Tempo estimado de espera
+          Tempo de espera
         </Typography>
 
-        <Paper>
-          <Typography variant="h1" className={classes.containerTimer}>
-            {settingsContext.waitingTime} min
-          </Typography>
-        </Paper>
-        {/* <Box display="flex" justifyContent="center" padding="1.5rem">
+        <Box marginBottom="2rem">
+          <Paper>
+            <Typography variant="h2" className={classes.containerTimer}>
+              {settingsContext.waitingTime} min
+            </Typography>
+          </Paper>
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+          flexGrow={1}
+          position="relative"
+        >
           <img
-            // className={classes.imageLogo}
-            src="./assets/img/logo1.jpg"
+            className={classes.imageLogo}
             alt="logo"
-            width="100px"
+            src="./assets/img/logo1.jpg"
           />
-        </Box> */}
+        </Box>
       </Box>
 
       {ordersToAlertQueue.map((order) => {

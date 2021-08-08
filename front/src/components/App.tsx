@@ -5,7 +5,7 @@ import Layout from "./layout";
 import Management from "./pages/management";
 import History from "./pages/history";
 import Display from "./pages/display";
-import Socket from "./pages/socket";
+import Socket from "./pages/Socket";
 // import Root from "./pages/root/index";
 
 import { PATHS } from "../config/paths";
