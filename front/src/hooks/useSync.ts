@@ -10,13 +10,7 @@ export const useSync = (
     const callback = () => {
       const storedValue = storage.get(key);
 
-      const isLocalEmpty = localValue && Object.keys(localValue)?.length > 0;
-      const isStoredEmpty =
-        !storedValue && Object.keys(storedValue)?.length > 0;
-
-      console.log({ isLocalEmpty, isStoredEmpty });
-
-      if (JSON.stringify(storedValue) !== JSON.stringify(localValue)) {
+      if (storedValue) {
         console.log("sync");
         setter(storedValue);
       }

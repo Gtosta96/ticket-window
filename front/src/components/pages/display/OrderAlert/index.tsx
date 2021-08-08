@@ -3,6 +3,8 @@ import { useContext, useEffect, useRef } from "react";
 import { OrdersContext } from "../../../../context/OrdersContext";
 import { OrderAlertProps } from "./types";
 
+import audioAlert from "./alert.mp3";
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     position: "fixed",
@@ -59,7 +61,7 @@ export default function OrderAlert({ order }: OrderAlertProps) {
         alerts: order.alerts + 1,
         updatedAt: new Date().getTime(),
       });
-    }, 3000);
+    }, 8000);
     timeout.current = id;
 
     return () => {
@@ -70,8 +72,14 @@ export default function OrderAlert({ order }: OrderAlertProps) {
 
   return (
     <Box className={classes.root}>
+      <audio autoPlay>
+        <source src={audioAlert} type="audio/wav" />
+      </audio>
+
       <Box bgcolor="primary.main" color="primary.contrastText">
-        <Typography className={classes.header}>ATENÇÃO</Typography>
+        <Typography className={classes.header}>
+          ATENÇÃO {order.deliveryMan}
+        </Typography>
       </Box>
       <Box
         display="flex"

@@ -26,25 +26,25 @@ export const OrdersContext = createContext<OrdersContextState>(
 const OrdersContextProvider = ({ children }: OrdersContextProviderProps) => {
   const [orders, setOrders] = useState<OrdersContextState[`orders`]>([]);
 
-  // useSync("orders", orders, setOrders);
-  useEffect(() => {
-    const callback = () => {
-      const storageOrders = storage.get("orders");
-      const contextOrders = orders;
+  useSync("orders", orders, setOrders);
+  // useEffect(() => {
+  //   const callback = () => {
+  //     const storageOrders = storage.get("orders");
+  //     const contextOrders = orders;
 
-      console.log({ storageOrders, contextOrders });
+  //     console.log({ storageOrders, contextOrders });
 
-      if (storageOrders !== contextOrders) {
-        setOrders(storageOrders);
-      }
-    };
+  //     if (storageOrders !== contextOrders) {
+  //       setOrders(storageOrders);
+  //     }
+  //   };
 
-    window.addEventListener("storage", callback);
+  //   window.addEventListener("storage", callback);
 
-    return () => {
-      window.removeEventListener("storage", callback);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("storage", callback);
+  //   };
+  // }, []);
 
   useEffect(() => {
     storage.set("orders", orders);
