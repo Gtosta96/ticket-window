@@ -28,8 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   imageLogo: {
     position: "absolute",
+    width: "100%",
     height: "100%",
     borderRadius: "100%",
+    objectFit: "contain",
   },
 }));
 
@@ -114,6 +116,7 @@ function Display() {
         <Box
           display="flex"
           justifyContent="center"
+          alignItems="center"
           flexGrow={1}
           position="relative"
         >

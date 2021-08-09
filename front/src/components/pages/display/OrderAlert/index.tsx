@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function OrderAlert({ order }: OrderAlertProps) {
   const classes = useStyles();
   const { updateOrder } = useContext(OrdersContext);
-  let timeout = useRef(null); // outside react lifecycle
+  let timeout = useRef(null);
 
   useEffect(() => {
     if (timeout.current) {
@@ -55,7 +55,7 @@ export default function OrderAlert({ order }: OrderAlertProps) {
   return (
     <Box className={classes.root}>
       <audio autoPlay>
-        <source src={audioAlert} type="audio/wav" />
+        <source src={audioAlert} type="audio/mp3" />
       </audio>
 
       <Box bgcolor="primary.main" color="primary.contrastText" padding="2rem">
@@ -66,20 +66,27 @@ export default function OrderAlert({ order }: OrderAlertProps) {
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="space-between"
+        justifyContent="center"
         alignItems="center"
         padding="2rem 0"
         flexGrow={1}
       >
-        <Box marginBottom="2rem">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexGrow={1}
+        >
           <Typography variant="h1" className={classes.text} color="error">
-            Pedido # {order.orderNumber} - {order.platform}
+            Pedido #{order.orderNumber} - {order.platform}
           </Typography>
         </Box>
 
-        <Typography variant="h1" className={classes.text}>
-          RETIRAR PEDIDO NO BALCÃO
-        </Typography>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <Typography variant="h1" className={classes.text}>
+            RETIRAR PEDIDO NO BALCÃO
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

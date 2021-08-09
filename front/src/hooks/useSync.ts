@@ -4,15 +4,14 @@ import storage, { StorageKeys } from "../utils/storage";
 export const useSync = (
   key: StorageKeys,
   localValue: any,
-  setter: (value: any) => void
+  syncFn: (value: any) => void
 ) => {
   useEffect(() => {
     const callback = () => {
       const storedValue = storage.get(key);
 
       if (storedValue) {
-        console.log("sync");
-        setter(storedValue);
+        syncFn(storedValue);
       }
     };
 
@@ -21,7 +20,7 @@ export const useSync = (
     return () => {
       window.removeEventListener("storage", callback);
     };
-  }, []);
+  }, [key, syncFn]);
 
   useEffect(() => {
     storage.set(key, localValue);

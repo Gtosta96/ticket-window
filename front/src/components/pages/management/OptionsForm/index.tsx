@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SettingsIcon from "@material-ui/icons/Settings";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { OptionsFormData } from "./types";
 import { SettingsContext } from "../../../../context/SettingsContext";
 
@@ -34,10 +34,14 @@ export default function OptionsForm() {
   const [open, setOpen] = React.useState(false);
 
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<OptionsFormData>();
+  } = useForm<OptionsFormData>({
+    defaultValues: {
+      waitingTime: settingsContext.waitingTime,
+    },
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -48,7 +52,6 @@ export default function OptionsForm() {
   };
 
   const onSubmit = (data: OptionsFormData) => {
-    console.log({ data });
     settingsContext.setWaitingTime(data.waitingTime);
     handleClose();
   };
@@ -67,14 +70,20 @@ export default function OptionsForm() {
               Defina aqui as configurações do sistema
             </DialogContentText>
 
-            <TextField
-              {...register("waitingTime", { required: true })}
-              type="number"
-              error={!!errors.waitingTime}
-              helperText={errors.waitingTime?.message}
-              label="Tempo de espera"
-              variant="outlined"
-              margin="normal"
+            <Controller
+              name="waitingTime"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  type="number"
+                  error={!!errors.waitingTime}
+                  helperText={errors.waitingTime?.message}
+                  label="Tempo de espera"
+                  variant="outlined"
+                  margin="normal"
+                  {...field}
+                />
+              )}
             />
           </DialogContent>
 

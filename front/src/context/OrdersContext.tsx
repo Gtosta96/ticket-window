@@ -1,8 +1,6 @@
 import React, { createContext, useState } from "react";
-import { useEffect } from "react";
 import { useSync } from "../hooks/useSync";
 import { Order } from "../services/orders/types";
-import storage from "../utils/storage";
 import { OrdersContextProviderProps } from "./types";
 
 export interface OrdersContextState {
@@ -24,31 +22,9 @@ export const OrdersContext = createContext<OrdersContextState>(
 );
 
 const OrdersContextProvider = ({ children }: OrdersContextProviderProps) => {
-  const [orders, setOrders] = useState<OrdersContextState[`orders`]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
   useSync("orders", orders, setOrders);
-  // useEffect(() => {
-  //   const callback = () => {
-  //     const storageOrders = storage.get("orders");
-  //     const contextOrders = orders;
-
-  //     console.log({ storageOrders, contextOrders });
-
-  //     if (storageOrders !== contextOrders) {
-  //       setOrders(storageOrders);
-  //     }
-  //   };
-
-  //   window.addEventListener("storage", callback);
-
-  //   return () => {
-  //     window.removeEventListener("storage", callback);
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    storage.set("orders", orders);
-  }, [orders]);
 
   function addOrder(order: Order) {
     setOrders([...orders, order]);

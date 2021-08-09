@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { useSync } from "../hooks/useSync";
+import storage from "../utils/storage";
 
 import { SettingsContextProviderProps } from "./types";
 
@@ -20,10 +21,11 @@ export const SettingsContext = createContext<OrdersContextState>(
 const SettingsContextProvider = ({
   children,
 }: SettingsContextProviderProps) => {
-  const [waitingTime, setWaitingTime] =
-    useState<OrdersContextState[`waitingTime`]>(10);
+  const [waitingTime, setWaitingTime] = useState<number>(
+    storage.get(`waitingTime`) ?? 10
+  );
 
-  // useSync("waitingTime", waitingTime, setWaitingTime);
+  useSync("waitingTime", waitingTime, setWaitingTime);
 
   const settingsContextState: OrdersContextState = {
     waitingTime,
