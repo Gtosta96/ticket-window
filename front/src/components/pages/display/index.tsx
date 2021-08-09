@@ -88,7 +88,7 @@ function Display() {
         <Typography variant="h3" className={classes.header} gutterBottom>
           Prontos para retirada
         </Typography>
-        <Paper className={classes.containerOrderCard}>
+        <Paper className={classes.containerOrderCard} elevation={3}>
           {readyOrders.length > 0 ? (
             readyOrders.map((order) => (
               <OrderCard key={order.id} order={order} list />
@@ -107,7 +107,7 @@ function Display() {
         </Typography>
 
         <Box marginBottom="2rem">
-          <Paper>
+          <Paper elevation={3}>
             <Typography variant="h2" className={classes.containerTimer}>
               {settingsContext.waitingTime} min
             </Typography>

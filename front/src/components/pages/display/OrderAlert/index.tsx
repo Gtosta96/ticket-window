@@ -1,4 +1,11 @@
-import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
+import {
+  Box,
+  CardMedia,
+  Container,
+  makeStyles,
+  Theme,
+  Typography,
+} from "@material-ui/core";
 import { useContext, useEffect, useRef } from "react";
 import { OrdersContext } from "../../../../context/OrdersContext";
 import { OrderAlertProps } from "./types";
@@ -25,6 +32,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   text: {
     textAlign: "center",
     textTransform: "uppercase",
+    fontWeight: "bold",
+  },
+  logocontainer: {
+    justifyContent: "center",
+  },
+  logoimg: {
+    width: "800px",
+    objectFit: "contain",
   },
 }));
 
@@ -66,22 +81,52 @@ export default function OrderAlert({ order }: OrderAlertProps) {
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
         padding="2rem 0"
         flexGrow={1}
       >
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexGrow={1}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center">
           <Typography variant="h1" className={classes.text} color="error">
-            Pedido #{order.orderNumber} - {order.platform}
+            Pedido #{order.orderNumber}
           </Typography>
         </Box>
 
+        {order.platform === "iFood" ? (
+          <Box className={classes.logocontainer}>
+            <img
+              className={classes.logoimg}
+              src="/assets/img/ifood.png"
+              alt="ifood"
+            />
+          </Box>
+        ) : order.platform === "Uber Eats" ? (
+          <Box className={classes.logocontainer}>
+            <img
+              className={classes.logoimg}
+              src="/assets/img/ubereats.png"
+              alt="Uber Eats"
+            />
+          </Box>
+        ) : order.platform === "99Food" ? (
+          <Box className={classes.logocontainer}>
+            <img
+              className={classes.logoimg}
+              src="/assets/img/99.png"
+              alt="99Food"
+            />
+          </Box>
+        ) : order.platform === "Interno" ? (
+          <Box className={classes.logocontainer}>
+            <img
+              className={classes.logoimg}
+              src="/assets/img/interno.png"
+              alt="Interno"
+            />
+          </Box>
+        ) : (
+          console.log("Outro")
+        )}
         <Box display="flex" justifyContent="center" alignItems="center">
           <Typography variant="h1" className={classes.text}>
             RETIRAR PEDIDO NO BALCÃO
