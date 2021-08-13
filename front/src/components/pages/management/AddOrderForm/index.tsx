@@ -64,7 +64,7 @@ export default function AddOrderForm() {
     ordersContext.addOrder({
       ...savedOrder,
       id: v4(),
-      status: "Em Preparação",
+      status: "Preparado",
       createdAt: time,
       updatedAt: time,
       alerts: 0,
