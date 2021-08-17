@@ -1,11 +1,4 @@
-import {
-  Box,
-  CardMedia,
-  Container,
-  makeStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core";
+import { Box, makeStyles, Theme, Typography } from "@material-ui/core";
 import { useContext, useEffect, useRef } from "react";
 import { OrdersContext } from "../../../../context/OrdersContext";
 import { OrderAlertProps } from "./types";

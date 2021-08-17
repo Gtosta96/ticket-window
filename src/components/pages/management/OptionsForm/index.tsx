@@ -78,7 +78,7 @@ export default function OptionsForm() {
                   type="number"
                   error={!!errors.waitingTime}
                   helperText={errors.waitingTime?.message}
-                  label="Tempo de espera"
+                  label="Tempo estimado"
                   variant="outlined"
                   margin="normal"
                   {...field}

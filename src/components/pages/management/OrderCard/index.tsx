@@ -11,7 +11,6 @@ import {
 import { SendRounded, TvRounded } from "@material-ui/icons";
 import { CardProps } from "./types";
 import { OrdersContext } from "../../../../context/OrdersContext";
-import { format } from "date-fns";
 
 const useStyles = makeStyles({
   root: {

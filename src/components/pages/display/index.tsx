@@ -86,7 +86,7 @@ function Display() {
     >
       <Box display="flex" flexDirection="column">
         <Typography variant="h3" className={classes.header} gutterBottom>
-          Prontos para retirada
+          Pedidos prontos
         </Typography>
         <Paper className={classes.containerOrderCard} elevation={3}>
           {readyOrders.length > 0 ? (
@@ -103,7 +103,7 @@ function Display() {
 
       <Box display="flex" flexDirection="column">
         <Typography variant="h3" className={classes.header} gutterBottom>
-          Tempo de espera
+          Tempo estimado
         </Typography>
 
         <Box marginBottom="2rem">
