@@ -19,7 +19,8 @@ const useStyles = makeStyles({
     minWidth: "200px",
   },
   title: {
-    fontSize: 14,
+    fontSize: 24,
+    fontWeight: 800,
   },
   card: {
     display: "flex",
@@ -64,37 +65,38 @@ export default function OrderCard({ order, list }: CardProps) {
     <Card className={classes.root} variant="outlined">
       <CardContent className={list ? classes.list : classes.card}>
         <Box flexGrow={1} flexShrink={0} flexBasis="20%">
-          <Typography className={classes.title} color="textSecondary">
+          <Typography className={classes.title} color="primary">
             Pedido #{order.orderNumber}
           </Typography>
         </Box>
 
         <Box flexGrow={1} flexShrink={0} flexBasis="20%">
-          <Typography variant="body1" color="textPrimary">
+          <Typography variant="body2" color="textSecondary">
             Plataforma
           </Typography>
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant="h5" color="textPrimary">
             {order.platform}
           </Typography>
         </Box>
 
         <Box flexGrow={1} flexShrink={0} flexBasis="20%">
-          <Typography variant="body1" color="textPrimary">
+          <Typography variant="body2" color="textSecondary">
             Motoboy
           </Typography>
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant="h5" color="textPrimary">
             {order.deliveryMan}
           </Typography>
         </Box>
 
-        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
+        {/* <Box flexGrow={1} flexShrink={0} flexBasis="20%">
           <Typography variant="body1" color="textPrimary">
             Última atualização
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {format(new Date(order.updatedAt), "hh:mm")}
           </Typography>
-        </Box>
+        </Box> */}
+        {/* Retirado campo Ultima atualização */}
       </CardContent>
 
       {!list && (

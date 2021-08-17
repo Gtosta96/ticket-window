@@ -69,7 +69,7 @@ function Display() {
     const timeout = setInterval(() => {
       const ordersToAlert = getOrdersToAlert(readyOrders);
       setOrdersToAlertQueue(ordersToAlert);
-    }, 3000);
+    }, 1000 * 60 * 2); // 2 min
 
     return () => {
       clearInterval(timeout);

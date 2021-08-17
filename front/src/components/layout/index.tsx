@@ -110,7 +110,13 @@ export default function Layout({ children }: LayoutProps) {
         </Box>
       </Drawer>
 
-      <Box display="flex" flexDirection="column" padding="2rem" flexGrow={1}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        padding="2rem"
+        flexGrow={1}
+        overflow="auto"
+      >
         {children}
       </Box>
     </Box>

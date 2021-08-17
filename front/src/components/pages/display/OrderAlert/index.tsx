@@ -129,7 +129,7 @@ export default function OrderAlert({ order }: OrderAlertProps) {
         )}
         <Box display="flex" justifyContent="center" alignItems="center">
           <Typography variant="h1" className={classes.text}>
-            RETIRAR PEDIDO NO BALCÃO
+            RETIRE SEU PEDIDO
           </Typography>
         </Box>
       </Box>
