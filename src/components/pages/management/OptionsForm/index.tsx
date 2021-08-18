@@ -40,6 +40,7 @@ export default function OptionsForm() {
   } = useForm<OptionsFormData>({
     defaultValues: {
       waitingTime: settingsContext.waitingTime,
+      alertInterval: settingsContext.alertInterval,
     },
   });
 
@@ -53,6 +54,7 @@ export default function OptionsForm() {
 
   const onSubmit = (data: OptionsFormData) => {
     settingsContext.setWaitingTime(data.waitingTime);
+    settingsContext.setAlertInterval(data.alertInterval);
     handleClose();
   };
 
@@ -85,6 +87,22 @@ export default function OptionsForm() {
                 />
               )}
             />
+
+            <Controller
+              name="alertInterval"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  type="number"
+                  error={!!errors.alertInterval}
+                  helperText={errors.alertInterval?.message}
+                  label="Intervalo entre os alertas (em segundos)"
+                  variant="outlined"
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
           </DialogContent>
 
           <DialogActions>
@@ -92,7 +110,7 @@ export default function OptionsForm() {
               Cancelar
             </Button>
             <Button type="submit" color="primary" variant="contained">
-              Cadastrar
+              Salvar
             </Button>
           </DialogActions>
         </form>

@@ -4,10 +4,11 @@ import { OrdersContext } from "../../../../context/OrdersContext";
 import { OrderAlertProps } from "./types";
 
 import audioAlert from "./alert.mp3";
+import { deliveryPlatforms } from "../../../../services/orders/types";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    position: "fixed",
+    position: "absolute",
     top: 0,
     left: 0,
     height: "100vh",
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     background: theme.palette.background.paper,
-    zIndex: 9999,
+    zIndex: 999,
   },
   header: {
     textAlign: "center",
@@ -27,11 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     textTransform: "uppercase",
     fontWeight: "bold",
   },
-  logocontainer: {
-    justifyContent: "center",
-  },
-  logoimg: {
-    width: "800px",
+  logo: {
+    width: "80%",
+    height: "80%",
+    position: "absolute",
     objectFit: "contain",
   },
 }));
@@ -60,6 +60,10 @@ export default function OrderAlert({ order }: OrderAlertProps) {
     };
   }, [updateOrder, order, timeout]);
 
+  const platformImg = deliveryPlatforms.find(
+    (platform) => platform.value === order.platform
+  ).img;
+
   return (
     <Box className={classes.root}>
       <audio autoPlay>
@@ -85,41 +89,21 @@ export default function OrderAlert({ order }: OrderAlertProps) {
           </Typography>
         </Box>
 
-        {order.platform === "iFood" ? (
-          <Box className={classes.logocontainer}>
-            <img
-              className={classes.logoimg}
-              src="/assets/img/ifood.png"
-              alt="ifood"
-            />
-          </Box>
-        ) : order.platform === "Uber Eats" ? (
-          <Box className={classes.logocontainer}>
-            <img
-              className={classes.logoimg}
-              src="/assets/img/ubereats.png"
-              alt="Uber Eats"
-            />
-          </Box>
-        ) : order.platform === "99Food" ? (
-          <Box className={classes.logocontainer}>
-            <img
-              className={classes.logoimg}
-              src="/assets/img/99.png"
-              alt="99Food"
-            />
-          </Box>
-        ) : order.platform === "Interno" ? (
-          <Box className={classes.logocontainer}>
-            <img
-              className={classes.logoimg}
-              src="/assets/img/interno.png"
-              alt="Interno"
-            />
-          </Box>
-        ) : (
-          console.log("Outro")
-        )}
+        <Box
+          position="relative"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          flexGrow={1}
+        >
+          <img
+            className={classes.logo}
+            src={platformImg}
+            alt={order.platform}
+          />
+        </Box>
+
         <Box display="flex" justifyContent="center" alignItems="center">
           <Typography variant="h1" className={classes.text}>
             RETIRE SEU PEDIDO

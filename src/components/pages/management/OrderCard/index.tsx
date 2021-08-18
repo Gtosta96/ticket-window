@@ -11,15 +11,12 @@ import {
 import { SendRounded, TvRounded } from "@material-ui/icons";
 import { CardProps } from "./types";
 import { OrdersContext } from "../../../../context/OrdersContext";
+import { deliveryPlatforms } from "../../../../services/orders/types";
 
 const useStyles = makeStyles({
   root: {
     margin: "0.5rem",
     minWidth: "200px",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 800,
   },
   card: {
     display: "flex",
@@ -60,25 +57,36 @@ export default function OrderCard({ order, list }: CardProps) {
     ordersContext.deleteOrder(order);
   }
 
+  const platformImg = deliveryPlatforms.find(
+    (platform) => platform.value === order.platform
+  ).img;
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={list ? classes.list : classes.card}>
-        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
-          <Typography className={classes.title} color="primary">
+        <Box flexGrow={0} flexShrink={0} flexBasis={0}>
+          <Typography variant="h5" color="textPrimary">
             Pedido #{order.orderNumber}
           </Typography>
         </Box>
 
-        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
+        <Box flexGrow={0} flexShrink={0} flexBasis={0}>
           <Typography variant="body2" color="textSecondary">
             Plataforma
           </Typography>
-          <Typography variant="h5" color="textPrimary">
+          {/* <Typography variant="h5" color="textPrimary">
             {order.platform}
-          </Typography>
+          </Typography> */}
+          <img
+            width={100}
+            height={50}
+            style={{ objectFit: "contain" }}
+            src={platformImg}
+            alt={order.platform}
+          />
         </Box>
 
-        <Box flexGrow={1} flexShrink={0} flexBasis="20%">
+        <Box flexGrow={0} flexShrink={0} flexBasis={0}>
           <Typography variant="body2" color="textSecondary">
             Motoboy
           </Typography>

@@ -7,11 +7,17 @@ import { SettingsContextProviderProps } from "./types";
 export interface OrdersContextState {
   waitingTime: number;
   setWaitingTime: (waitingTime: number) => void;
+
+  alertInterval: number;
+  setAlertInterval: (alertInterval: number) => void;
 }
 
 export const SETTINGS_CONTEXT_INITIAL_VALUES: OrdersContextState = {
   waitingTime: undefined,
   setWaitingTime: undefined,
+
+  alertInterval: undefined,
+  setAlertInterval: undefined,
 };
 
 export const SettingsContext = createContext<OrdersContextState>(
@@ -25,11 +31,19 @@ const SettingsContextProvider = ({
     storage.get(`waitingTime`) ?? 10
   );
 
+  const [alertInterval, setAlertInterval] = useState<number>(
+    storage.get(`alertInterval`) ?? 120
+  );
+
   useSync("waitingTime", waitingTime, setWaitingTime);
+  useSync("alertInterval", alertInterval, setAlertInterval);
 
   const settingsContextState: OrdersContextState = {
     waitingTime,
     setWaitingTime,
+
+    alertInterval,
+    setAlertInterval,
   };
 
   return (

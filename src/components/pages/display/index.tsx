@@ -3,9 +3,9 @@ import OrderAlert from "./OrderAlert";
 import { Box, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
 import { OrdersContext } from "../../../context/OrdersContext";
 import OrderCard from "../management/OrderCard";
-import { differenceInSeconds } from "date-fns";
 import { Order } from "../../../services/orders/types";
 import { SettingsContext } from "../../../context/SettingsContext";
+import { getOrdersToAlert } from "./helpers";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -26,27 +26,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: "bold",
     textTransform: "uppercase",
   },
-  imageLogo: {
-    position: "absolute",
+  logo: {
     width: "100%",
-    height: "100%",
-    borderRadius: "100%",
+    position: "absolute",
     objectFit: "contain",
+    borderRadius: "100%",
   },
 }));
-
-function getOrdersToAlert(orders: Order[]) {
-  const ordersToAlert = orders.filter((order) => {
-    const diffInSeconds = differenceInSeconds(
-      new Date(),
-      new Date(order.updatedAt)
-    );
-
-    return order.alerts === 0 || diffInSeconds >= 30;
-  });
-
-  return ordersToAlert;
-}
 
 function Display() {
   const classes = useStyles();
@@ -61,20 +47,26 @@ function Display() {
   );
 
   useEffect(() => {
-    const ordersToAlert = getOrdersToAlert(readyOrders);
+    const ordersToAlert = getOrdersToAlert(readyOrders, 0);
     setOrdersToAlertQueue(ordersToAlert);
   }, [readyOrders]);
 
   useEffect(() => {
     const timeout = setInterval(() => {
-      const ordersToAlert = getOrdersToAlert(readyOrders);
+      const ordersToAlert = getOrdersToAlert(
+        readyOrders,
+        settingsContext.alertInterval
+      );
+      console.log("executou");
+      console.table(ordersToAlert);
       setOrdersToAlertQueue(ordersToAlert);
-    }, 1000 * 60 * 2); // 2 min
+    }, 3000);
 
     return () => {
+      console.log("resetou");
       clearInterval(timeout);
     };
-  }, [readyOrders]);
+  }, [readyOrders, settingsContext.alertInterval]);
 
   return (
     <Box
@@ -114,14 +106,15 @@ function Display() {
           </Paper>
         </Box>
         <Box
+          position="relative"
           display="flex"
           justifyContent="center"
           alignItems="center"
+          width="100%"
           flexGrow={1}
-          position="relative"
         >
           <img
-            className={classes.imageLogo}
+            className={classes.logo}
             alt="logo"
             src="./assets/img/logo1.jpg"
           />

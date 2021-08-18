@@ -1,4 +1,4 @@
-export type StorageKeys = "orders" | "waitingTime";
+export type StorageKeys = "orders" | "waitingTime" | "alertInterval";
 
 function storageFn() {
   function get(key: StorageKeys) {
