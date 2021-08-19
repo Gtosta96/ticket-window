@@ -21,8 +21,6 @@ const useStyles = makeStyles({
   card: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
     gridGap: "1rem",
   },
   list: {
