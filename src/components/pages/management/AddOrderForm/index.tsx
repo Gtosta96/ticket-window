@@ -53,6 +53,7 @@ export default function AddOrderForm() {
   };
 
   const handleClose = () => {
+    reset();
     setOpen(false);
   };
 
@@ -70,7 +71,6 @@ export default function AddOrderForm() {
       alerts: 0,
     });
 
-    reset();
     handleClose();
   };
 
