@@ -2,6 +2,9 @@ export const deliveryPlatforms = [
   { label: "iFood", value: "iFood", img: "/assets/img/ifood.png" },
   { label: "Uber Eats", value: "Uber Eats", img: "/assets/img/ubereats.png" },
   { label: "99Food", value: "99Food", img: "/assets/img/99.png" },
+  { label: "AiqFome", value: "aiqfome", img: "/assets/img/aiqfome.png" },
+  { label: "Goomer", value: "goomer", img: "/assets/img/goomer.png" },
+  { label: "Rappi", value: "rappi", img: "/assets/img/rappi.png" },
   { label: "Interno", value: "Interno", img: "/assets/img/interno.png" },
 ];
 

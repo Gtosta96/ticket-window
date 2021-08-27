@@ -30,6 +30,10 @@ const useStyles = makeStyles({
     alignItems: "center",
     gridGap: "1rem",
   },
+  textTitle: {
+    fontSize: "1.63rem",
+    fontWeight: "bold",
+  },
 });
 
 export default function OrderCard({ order, list }: CardProps) {
@@ -65,15 +69,18 @@ export default function OrderCard({ order, list }: CardProps) {
     <Card className={classes.root} variant="outlined">
       <CardContent className={list ? classes.list : classes.card}>
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography variant="h5" color="textPrimary">
-            Pedido #{order.orderNumber}
+          <Typography className={classes.textTitle}>
+            Pedido
+            <Typography
+              style={{ color: "red", fontSize: "2rem", fontWeight: "bold" }}
+            >
+              #{order.orderNumber}
+            </Typography>
           </Typography>
         </Box>
 
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography variant="body2" color="textSecondary">
-            Plataforma
-          </Typography>
+          <Typography className={classes.textTitle}>Plataforma</Typography>
           {/* <Typography variant="h5" color="textPrimary">
             {order.platform}
           </Typography> */}
@@ -87,10 +94,10 @@ export default function OrderCard({ order, list }: CardProps) {
         </Box>
 
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography variant="body2" color="textSecondary">
-            Motoboy
-          </Typography>
-          <Typography variant="h5" color="textPrimary">
+          <Typography className={classes.textTitle}>Motoboy</Typography>
+          <Typography
+            style={{ color: "red", fontSize: "2rem", fontWeight: "bold" }}
+          >
             {order.deliveryMan}
           </Typography>
         </Box>

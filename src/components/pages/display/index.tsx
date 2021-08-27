@@ -9,7 +9,7 @@ import { getOrdersToAlert } from "./helpers";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
-    fontWeight: "normal",
+    fontWeight: "bold",
     textAlign: "center",
     textTransform: "uppercase",
   },
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "1rem",
     borderTop: `10px solid ${theme.palette.primary.main}`,
     textAlign: "center",
+    width: "670px",
     flexGrow: 1,
   },
   containerTimer: {
@@ -71,7 +72,7 @@ function Display() {
   return (
     <Box
       display="flex"
-      gridGap="2rem"
+      gridGap="10rem"
       flexGrow={1}
       maxWidth="1280px"
       margin="0 auto"
