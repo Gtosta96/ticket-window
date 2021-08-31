@@ -26,12 +26,11 @@ const useStyles = makeStyles({
   list: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     gridGap: "1rem",
   },
-  textTitle: {
-    fontSize: "1.63rem",
+  bold: {
     fontWeight: "bold",
   },
 });
@@ -69,18 +68,26 @@ export default function OrderCard({ order, list }: CardProps) {
     <Card className={classes.root} variant="outlined">
       <CardContent className={list ? classes.list : classes.card}>
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography className={classes.textTitle}>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            className={classes.bold}
+          >
             Pedido
-            <Typography
-              style={{ color: "red", fontSize: "2rem", fontWeight: "bold" }}
-            >
-              #{order.orderNumber}
-            </Typography>
+          </Typography>
+          <Typography variant="h5" color="secondary">
+            #{order.orderNumber}
           </Typography>
         </Box>
 
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography className={classes.textTitle}>Plataforma</Typography>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            className={classes.bold}
+          >
+            Plataforma
+          </Typography>
           {/* <Typography variant="h5" color="textPrimary">
             {order.platform}
           </Typography> */}
@@ -94,10 +101,14 @@ export default function OrderCard({ order, list }: CardProps) {
         </Box>
 
         <Box flexGrow={0} flexShrink={0} flexBasis={0}>
-          <Typography className={classes.textTitle}>Motoboy</Typography>
           <Typography
-            style={{ color: "red", fontSize: "2rem", fontWeight: "bold" }}
+            variant="body1"
+            color="textPrimary"
+            className={classes.bold}
           >
+            Motoboy
+          </Typography>
+          <Typography variant="h5" color="secondary">
             {order.deliveryMan}
           </Typography>
         </Box>

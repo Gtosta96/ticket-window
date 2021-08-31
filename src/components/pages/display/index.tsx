@@ -58,13 +58,11 @@ function Display() {
         readyOrders,
         settingsContext.alertInterval
       );
-      console.log("executou");
       console.table(ordersToAlert);
       setOrdersToAlertQueue(ordersToAlert);
     }, 3000);
 
     return () => {
-      console.log("resetou");
       clearInterval(timeout);
     };
   }, [readyOrders, settingsContext.alertInterval]);

@@ -8,12 +8,6 @@ import {
   Dialog,
   TextField,
   Button,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  FormHelperText,
   Fab,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,6 +16,7 @@ import { deliveryPlatforms } from "../../../../services/orders/types";
 import { useForm } from "react-hook-form";
 import { AddOrderFormData } from "./types";
 import { OrdersContext } from "../../../../context/OrdersContext";
+import { Autocomplete } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +89,6 @@ export default function AddOrderForm() {
               error={!!errors.orderNumber}
               helperText={errors.orderNumber?.message}
               label="Número do Pedido"
-              id="numero-pedido"
               type="number"
               variant="outlined"
               margin="normal"
@@ -105,34 +99,28 @@ export default function AddOrderForm() {
               error={!!errors.deliveryMan}
               helperText={errors.deliveryMan?.message}
               label="Nome do Motoboy"
-              id="deliveryMan"
               type="text"
               variant="outlined"
               margin="normal"
             />
 
-            <FormControl
-              component="fieldset"
-              margin="normal"
-              error={!!errors.platform}
-            >
-              <FormLabel component="legend">Plataforma</FormLabel>
-              <RadioGroup
-                name="platform"
-                row
-                {...register("platform", { required: true })}
-              >
-                {deliveryPlatforms.map((deliveryPlatform) => (
-                  <FormControlLabel
-                    key={deliveryPlatform.value}
-                    value={deliveryPlatform.value}
-                    label={deliveryPlatform.label}
-                    control={<Radio />}
+            <Autocomplete
+              options={deliveryPlatforms}
+              getOptionLabel={(option) => option.label}
+              renderInput={(params) => {
+                return (
+                  <TextField
+                    {...params}
+                    {...register("platform", { required: true })}
+                    margin="normal"
+                    label="Plataforma"
+                    variant="outlined"
+                    error={!!errors.orderNumber}
+                    helperText={errors.orderNumber?.message}
                   />
-                ))}
-              </RadioGroup>
-              <FormHelperText>{errors.platform?.message}</FormHelperText>
-            </FormControl>
+                );
+              }}
+            />
           </DialogContent>
 
           <DialogActions>

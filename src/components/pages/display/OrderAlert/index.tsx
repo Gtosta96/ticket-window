@@ -78,13 +78,13 @@ export default function OrderAlert({ order }: OrderAlertProps) {
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="space-between"
+        justifyContent="space-around"
         alignItems="center"
         padding="2rem 0"
         flexGrow={1}
       >
         <Box display="flex" justifyContent="center" alignItems="center">
-          <Typography variant="h1" className={classes.text} color="error">
+          <Typography variant="h1" className={classes.text} color="secondary">
             Pedido #{order.orderNumber}
           </Typography>
         </Box>
